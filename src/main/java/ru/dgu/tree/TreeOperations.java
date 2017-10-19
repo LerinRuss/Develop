@@ -1,9 +1,8 @@
-package ru.omsu.imit.erlan_momonov.other.vitalys.tree;
+package ru.dgu.tree;
 
-import ru.omsu.imit.erlan_momonov.other.vitalys.tiles.Tile;
+import ru.dgu.tiles.Tile;
 
-public class TreeOperations
-{
+public class TreeOperations {
     public static void grow(Tile[][] tiles){
 
     }

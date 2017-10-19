@@ -1,8 +1,8 @@
-package ru.omsu.imit.erlan_momonov.other.vitalys.tree;
+package ru.dgu.tree;
 
-import ru.omsu.imit.erlan_momonov.other.vitalys.AbstractObjectOnTile;
-import ru.omsu.imit.erlan_momonov.other.vitalys.tiles.Tile;
-import ru.omsu.imit.erlan_momonov.other.vitalys.tiles.TileType;
+import ru.dgu.AbstractObjectOnTile;
+import ru.dgu.tiles.Tile;
+import ru.dgu.tiles.TileType;
 
 import java.util.Set;
 

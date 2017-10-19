@@ -1,5 +1,4 @@
-package ru.omsu.imit.erlan_momonov.other.vitalys;
+package ru.dgu;
 
-public abstract class AbstractObjectOnTile
-{
+public abstract class AbstractObjectOnTile {
 }

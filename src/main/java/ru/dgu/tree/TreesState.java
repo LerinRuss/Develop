@@ -1,6 +1,5 @@
-package ru.omsu.imit.erlan_momonov.other.vitalys.tree;
+package ru.dgu.tree;
 
-public interface TreesState
-{
+public interface TreesState {
 
 }

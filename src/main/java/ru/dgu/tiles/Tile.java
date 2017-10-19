@@ -1,4 +1,4 @@
-package ru.omsu.imit.erlan_momonov.other.vitalys.tiles;
+package ru.dgu.tiles;
 
 public interface Tile
 {
