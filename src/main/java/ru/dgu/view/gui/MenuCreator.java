@@ -1,0 +1,12 @@
+package ru.dgu.view.gui;
+
+import javax.swing.*;
+
+public class MenuCreator {
+    private MenuCreator(){
+    }
+
+    public static JComponent create(){
+        return Menu.Builder.generate(800,600);
+    }
+}
