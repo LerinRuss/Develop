@@ -1,4 +1,4 @@
-package ru.dgu.utils.coordinates;
+package ru.dgu.model.utils.coordinates;
 
 import ru.dgu.tiles.Map;
 
