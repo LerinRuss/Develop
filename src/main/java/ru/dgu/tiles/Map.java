@@ -4,6 +4,11 @@ public class Map {
     private final Tile[][] map;
 
     public Map(final int width,final int height){
+        if(width <= 0)
+            throw new IllegalArgumentException("width less or equal 0");
+        if(height <= 0)
+            throw new IllegalArgumentException("height less or equal 0");
+
         map = new Tile[width][height];
         fillMap(Tile.Grass);
     }
@@ -11,7 +16,7 @@ public class Map {
     private void fillMap(final Tile type){
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
-                setTile(TileChoicer.choice(type), x,y);
+                setTile(type, x,y);
             }
         }
     }
