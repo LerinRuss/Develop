@@ -5,13 +5,15 @@ import ru.dgu.tiles.Map;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-class Drawer {
+public class Drawer {
+    private static Drawer drawer;
+
     private final BufferedImage desk;
     private final Graphics2D parent;
     private final Map map;
     private final int tileSize;
 
-    Drawer(final Graphics2D g,final Map map,final int tileSize){
+    private Drawer(final Graphics2D g,final Map map,final int tileSize){
         final int width = map.getWidth() * tileSize;
         final int height = map.getHeight() * tileSize;
 
@@ -21,7 +23,11 @@ class Drawer {
         this.tileSize = tileSize;
     }
 
-    public void paint(){
+    public static Drawer create(final Graphics2D parent, final Map map, final int tileSize){
+        return drawer == null ? drawer = new Drawer(parent,map, tileSize) : drawer;
+    }
 
+    public void repaint(){
+        
     }
 }
