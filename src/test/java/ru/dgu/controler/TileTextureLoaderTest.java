@@ -1,8 +1,6 @@
 package ru.dgu.controler;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
-import ru.dgu.tiles.TileType;
 
 import java.awt.image.BufferedImage;
 

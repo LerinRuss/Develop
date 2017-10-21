@@ -5,10 +5,10 @@ public class Map {
 
     public Map(final int width,final int height){
         map = new Tile[width][height];
-        fillMap(TileType.Grass);
+        fillMap(Tile.Grass);
     }
 
-    private void fillMap(final TileType type){
+    private void fillMap(final Tile type){
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
                 setTile(TileChoicer.choice(type), x,y);

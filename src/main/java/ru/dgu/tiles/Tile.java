@@ -1,6 +1,6 @@
 package ru.dgu.tiles;
 
-public interface Tile
+public enum Tile
 {
-    TileType getType();
+    Grass, Sand, Water
 }

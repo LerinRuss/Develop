@@ -1,9 +1,9 @@
 package ru.dgu.tree;
 
-import ru.dgu.tiles.Tile;
+import ru.dgu.tiles.Map;
 
 public class TreeOperations {
-    public static void grow(Tile[][] tiles){
+    public static void grow(Map tiles){
 
     }
 }
