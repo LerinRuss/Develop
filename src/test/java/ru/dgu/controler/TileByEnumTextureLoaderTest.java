@@ -1,6 +1,8 @@
 package ru.dgu.controler;
 
 import org.junit.Test;
+import ru.dgu.core.main.Main;
+import ru.dgu.tiles.Tile;
 
 import java.awt.image.BufferedImage;
 
@@ -10,11 +12,10 @@ public class TileByEnumTextureLoaderTest
 {
     @Test
     public void load() throws Exception {
-        TileTextureLoader.load();
-        final BufferedImage[] textures = TileTextureLoader.getTextures();
+        TileTextureLoader.load(Main.TILE_SIZE);
 
-        for (BufferedImage texture : textures) {
-            assertNotNull(texture);
+        for (Tile tile : Tile.values()) {
+            assertNotNull(TileTextureLoader.getTexture(tile));
         }
     }
 }

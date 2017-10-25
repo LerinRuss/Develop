@@ -1,7 +1,5 @@
 package ru.dgu.model.map;
 
-import ru.dgu.controler.TileTextureLoader;
-
 import java.awt.image.BufferedImage;
 
 public enum TileByEnum

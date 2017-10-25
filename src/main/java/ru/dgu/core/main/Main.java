@@ -10,8 +10,10 @@ import ru.dgu.view.gui.Window;
 import javax.swing.*;
 
 public class Main {
+    public final static int TILE_SIZE = 20;
+
     public static void main(String[] args) {
-        TileTextureLoader.load();
+        TileTextureLoader.load(TILE_SIZE);
 
         for (TileByEnum tile : TileByEnum.values()) {
             tile.setTexture(TileTextureLoader.getTexture(tile));
