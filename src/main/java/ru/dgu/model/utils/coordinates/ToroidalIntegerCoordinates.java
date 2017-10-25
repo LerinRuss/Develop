@@ -1,6 +1,6 @@
 package ru.dgu.model.utils.coordinates;
 
-import ru.dgu.tiles.Map;
+import ru.dgu.model.map.Map;
 
 public class ToroidalIntegerCoordinates implements IntegerCoordinates{
 

@@ -1,6 +1,6 @@
 package ru.dgu.controler;
 
-import ru.dgu.tiles.Tile;
+import ru.dgu.model.map.TileByEnum;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class TileTextureLoader {
-    private static final BufferedImage[] textures = new BufferedImage[Tile.values().length];
+    private static final BufferedImage[] textures = new BufferedImage[TileByEnum.values().length];
     private static final File directoryPath = new File("src/main/resources/textures/tiles/");
     private static final String format = ".png";
     private static boolean loaded;
@@ -17,7 +17,7 @@ public class TileTextureLoader {
         if(loaded)
             return;
 
-        Tile[] types = Tile.values();
+        TileByEnum[] types = TileByEnum.values();
         for (int i = 0; i < types.length; i++) {
             final File file = new File(directoryPath,types[i].name().concat(format));
             try {
@@ -30,7 +30,7 @@ public class TileTextureLoader {
         loaded = true;
     }
 
-    public static BufferedImage getTexture(Tile type){
+    public static BufferedImage getTexture(TileByEnum type){
         if(!loaded)
             throw new LoadingException("First, you need to load textures to get someone");
         return textures[type.ordinal()];

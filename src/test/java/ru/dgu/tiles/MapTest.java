@@ -2,6 +2,7 @@ package ru.dgu.tiles;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.dgu.model.map.Map;
 
 import static org.junit.Assert.*;
 

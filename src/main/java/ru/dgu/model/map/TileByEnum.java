@@ -1,10 +1,10 @@
-package ru.dgu.tiles;
+package ru.dgu.model.map;
 
 import ru.dgu.controler.TileTextureLoader;
 
 import java.awt.image.BufferedImage;
 
-public enum Tile
+public enum TileByEnum
 {
     Grass, Sand, Water;
     private BufferedImage texture;

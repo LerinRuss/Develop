@@ -6,7 +6,8 @@ import java.awt.image.BufferedImage;
 
 import static org.junit.Assert.*;
 
-public class TileTextureLoaderTest {
+public class TileByEnumTextureLoaderTest
+{
     @Test
     public void load() throws Exception {
         TileTextureLoader.load();

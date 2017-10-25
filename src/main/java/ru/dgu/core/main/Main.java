@@ -2,8 +2,8 @@ package ru.dgu.core.main;
 
 import ru.dgu.controler.TileTextureLoader;
 import ru.dgu.model.Loupe;
-import ru.dgu.tiles.Map;
-import ru.dgu.tiles.Tile;
+import ru.dgu.model.map.Map;
+import ru.dgu.model.map.TileByEnum;
 import ru.dgu.view.gui.Drawer;
 import ru.dgu.view.gui.Window;
 
@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
         TileTextureLoader.load();
 
-        for (Tile tile : Tile.values()) {
+        for (TileByEnum tile : TileByEnum.values()) {
             tile.setTexture(TileTextureLoader.getTexture(tile));
         }
 

@@ -3,9 +3,8 @@ package ru.dgu.view.gui;
 import ru.dgu.model.Loupe;
 import ru.dgu.model.utils.Transfer;
 import ru.dgu.model.utils.coordinates.IntegerCoordinates;
-import ru.dgu.tiles.Map;
+import ru.dgu.model.map.Map;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

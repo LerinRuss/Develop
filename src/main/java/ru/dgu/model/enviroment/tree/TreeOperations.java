@@ -1,6 +1,6 @@
-package ru.dgu.tree;
+package ru.dgu.model.enviroment.tree;
 
-import ru.dgu.tiles.Map;
+import ru.dgu.model.map.Map;
 
 public class TreeOperations {
     public static void grow(Map tiles){

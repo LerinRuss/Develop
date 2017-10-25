@@ -1,7 +1,7 @@
-package ru.dgu.tiles;
+package ru.dgu.model.map;
 
 public class Map {
-    private final Tile[][] map;
+    private final TileByEnum[][] map;
 
     public Map(final int width,final int height){
         if(width <= 0)
@@ -9,11 +9,11 @@ public class Map {
         if(height <= 0)
             throw new IllegalArgumentException("height less or equal 0");
 
-        map = new Tile[width][height];
-        fillMap(Tile.Grass);
+        map = new TileByEnum[width][height];
+        fillMap(TileByEnum.Grass);
     }
 
-    private void fillMap(final Tile type){
+    private void fillMap(final TileByEnum type){
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
                 setTile(type, x,y);
@@ -29,11 +29,11 @@ public class Map {
         return map[0].length;
     }
 
-    public Tile getTile(final int x, final int y){
+    public TileByEnum getTile(final int x, final int y){
         return map[x][y];
     }
 
-    public void setTile(final Tile tile, final int x, final int y){
+    public void setTile(final TileByEnum tile, final int x, final int y){
         map[x][y] = tile;
     }
 }
