@@ -1,16 +1,16 @@
 package ru.dgu.model.utils.coordinates;
 
-import ru.dgu.model.map.Map;
+import ru.dgu.model.map.MapByEnumArray;
 
 public class ToroidalIntegerCoordinates implements IntegerCoordinates{
 
     private final int x, y;
 
-    public ToroidalIntegerCoordinates(final Map map, final int x, final int y){
-        if(x < 0 || x >= map.getWidth())
-            throw new OutOfMapBoundsException("Coordinate x = " + x + " out of map width bound = " + map.getWidth());
-        if(y < 0 || y >= map.getHeight())
-            throw new OutOfMapBoundsException("Coordinate y = " + y + " out of map height bound = " + map.getHeight());
+    public ToroidalIntegerCoordinates(final MapByEnumArray mapByEnumArray, final int x, final int y){
+        if(x < 0 || x >= mapByEnumArray.getWidth())
+            throw new OutOfMapBoundsException("Coordinate x = " + x + " out of mapByEnumArray width bound = " + mapByEnumArray.getWidth());
+        if(y < 0 || y >= mapByEnumArray.getHeight())
+            throw new OutOfMapBoundsException("Coordinate y = " + y + " out of mapByEnumArray height bound = " + mapByEnumArray.getHeight());
 
         this.x = x;
         this.y = y;

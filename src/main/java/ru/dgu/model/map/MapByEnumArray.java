@@ -1,9 +1,11 @@
 package ru.dgu.model.map;
 
-public class Map {
+
+public class MapByEnumArray
+{
     private final TileByEnum[][] map;
 
-    public Map(final int width,final int height){
+    public MapByEnumArray(final int width, final int height){
         if(width <= 0)
             throw new IllegalArgumentException("width less or equal 0");
         if(height <= 0)

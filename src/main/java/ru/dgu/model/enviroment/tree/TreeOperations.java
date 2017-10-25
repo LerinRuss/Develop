@@ -1,9 +1,9 @@
 package ru.dgu.model.enviroment.tree;
 
-import ru.dgu.model.map.Map;
+import ru.dgu.model.map.MapByEnumArray;
 
 public class TreeOperations {
-    public static void grow(Map tiles){
+    public static void grow(MapByEnumArray tiles){
 
     }
 }
