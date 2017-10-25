@@ -1,6 +1,5 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.model.Loupe;
 import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.utils.Transfer;
 import ru.dgu.model.utils.coordinates.IntegerCoordinates;

@@ -18,6 +18,7 @@ public class UnitOperations
     public boolean isPassable(Unit unit, Tile tile)
     {
         return true;//Пока будем считать, что все юниты могут ходить по всем тайлам
+        //return unit.
     }
 
 }

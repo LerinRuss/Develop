@@ -1,4 +1,4 @@
-package ru.dgu.model;
+package ru.dgu.view.gui;
 
 public class Loupe {
     private static Loupe loupe;
