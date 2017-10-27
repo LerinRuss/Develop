@@ -15,7 +15,7 @@ public class Drawer extends BufferedImage{
     private final int tileSize;
 
     private Drawer(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
-        super(mapByEnumArray.getWidth() * tileSize, mapByEnumArray.getHeight() * tileSize, BufferedImage.TYPE_INT_ARGB);
+        super(mapByEnumArray.getSize() * tileSize, mapByEnumArray.getSize() * tileSize, BufferedImage.TYPE_INT_ARGB);
         if(tileSize <= 0)
             throw new IllegalArgumentException("TileSize must be greater 0");
 
@@ -43,13 +43,13 @@ public class Drawer extends BufferedImage{
         final int loupeEndY = loupe.getY() + (loupe.getHeight()/2);
         final IntegerCoordinates endCoordinates = Transfer.transferCoordinates(tileSize, loupeEndX, loupeEndY);
 
-        final int xEnd = Math.min(mapByEnumArray.getWidth() - 1, endCoordinates.getX());
-        final int yEnd = Math.min(mapByEnumArray.getHeight() - 1, endCoordinates.getY());
+        final int xEnd = Math.min(mapByEnumArray.getSize() - 1, endCoordinates.getX());
+        final int yEnd = Math.min(mapByEnumArray.getSize() - 1, endCoordinates.getY());
 
         Graphics g = getGraphics();
         for(int x = xStart; x < xEnd; x++){
             for(int y = yStart; y < yEnd; y++){
-                final BufferedImage texture = mapByEnumArray.getTile(x,y).getTexture();
+                final BufferedImage texture = mapByEnumArray.getTile(x,y).getType().getTexture();
                 g.drawImage(texture, x * tileSize, y * tileSize, tileSize, tileSize, null);
             }
         }

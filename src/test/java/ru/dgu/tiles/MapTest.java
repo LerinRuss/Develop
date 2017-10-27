@@ -19,10 +19,10 @@ public class MapTest {
 
     @Test
     public void getWidthTest() throws Exception {
-        assertEquals(width, mapByEnumArray.getWidth());
+        assertEquals(width, mapByEnumArray.getSize());
     }
     @Test
     public void getHeightTest() throws Exception {
-        assertEquals(height, mapByEnumArray.getHeight());
+        assertEquals(height, mapByEnumArray.getSize());
     }
 }
