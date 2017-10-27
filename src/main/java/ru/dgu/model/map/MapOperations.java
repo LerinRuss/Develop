@@ -2,7 +2,7 @@ package ru.dgu.model.map;
 
 
 import ru.dgu.model.map.tiles.TileType;
-import ru.dgu.model.units.Unit;
+import ru.dgu.model.objects.units.Unit;
 import ru.dgu.model.utils.Pair;
 
 import java.util.HashMap;
@@ -16,7 +16,6 @@ public class MapOperations
     {
     }
     //Maybe use pattern Strategy for different algorithm.
-
     /**
      * Return shortest way from unit to position (x,y) as list of coordinates.
      * Use a Moore neighborhood
@@ -26,10 +25,11 @@ public class MapOperations
      * @param y
      * @return
      */
-    public static List<Pair<Integer>> shortestWay(Unit unit, int x, int y)
+    public static List<Pair<Integer>> shortestWay(Unit unit, int x, int y, AbstractMap map)
     {
         List<Pair<Integer>> shortestWay = new LinkedList<>();
-        //Map<Pair<Integer>, Integer> map = castMap();
+        Map<Pair<Integer>, Integer> castMap = castMap(map);
+
         return shortestWay;
     }
 
