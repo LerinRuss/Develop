@@ -1,4 +1,4 @@
-package ru.dgu.model.enviroment.tree;
+package ru.dgu.model.objects.environment.tree;
 
 import ru.dgu.model.map.MapByEnumArray;
 

@@ -2,6 +2,7 @@ package ru.dgu.model.map;
 
 
 import ru.dgu.model.map.tiles.Tile;
+import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.utils.Pair;
 
 import java.util.HashMap;
@@ -37,6 +38,20 @@ public class MapByMap extends AbstractMap
     public Tile getTile(int x, int y)
     {
         return map.get(new Pair<Integer>(x, y));
+    }
+
+    @Override
+    public void setTileType(TileType newType, int x, int y)
+    {
+        Tile tile = map.get(new Pair<>(x,y));
+        tile.setType(newType);
+        map.put(new Pair<>(x,y),tile);
+    }
+
+    @Override
+    public TileType getTileType(int x, int y)
+    {
+        return map.get(new Pair<>(x,y)).getType();
     }
 
     public int getSize()

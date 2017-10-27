@@ -1,41 +1,62 @@
 package ru.dgu.model.map;
 
 
-public class MapByEnumArray
-{
-    private final TileByEnum[][] map;
+import ru.dgu.model.constants.Constants;
+import ru.dgu.model.map.tiles.ConcreteTile;
+import ru.dgu.model.map.tiles.Tile;
+import ru.dgu.model.map.tiles.TileType;
 
-    public MapByEnumArray(final int width, final int height){
-        if(width <= 0)
+public class MapByEnumArray extends AbstractMap
+{
+    private final Tile[][] map;
+
+    public MapByEnumArray(final int width, final int height)
+    {
+        if (width <= 0)
             throw new IllegalArgumentException("width less or equal 0");
-        if(height <= 0)
+        if (height <= 0)
             throw new IllegalArgumentException("height less or equal 0");
 
-        map = new TileByEnum[width][height];
-        fillMap(TileByEnum.Grass);
+        map = new Tile[width][height];
+        fillMap(Constants.DEFAULT_TILE_TYPE);
     }
 
-    private void fillMap(final TileByEnum type){
+    private void fillMap(final TileType type)
+    {
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
-                setTile(type, x,y);
+                setTile(new ConcreteTile(type), x, y);
             }
         }
     }
 
-    public int getWidth(){
-        return map.length;
+    @Override
+    public void setTile(Tile tile, int x, int y)
+    {
+        map[x][y] = tile;
+
     }
 
-    public int getHeight(){
-        return map[0].length;
-    }
-
-    public TileByEnum getTile(final int x, final int y){
+    public Tile getTile(final int x, final int y)
+    {
         return map[x][y];
     }
 
-    public void setTile(final TileByEnum tile, final int x, final int y){
-        map[x][y] = tile;
+    @Override
+    public void setTileType(TileType newType, int x, int y)
+    {
+        map[x][y].setType(newType);
+    }
+
+    @Override
+    public TileType getTileType(int x, int y)
+    {
+        return null;
+    }
+
+    @Override
+    public int getSize()
+    {
+        return map.length;
     }
 }

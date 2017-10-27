@@ -1,7 +1,9 @@
-package ru.dgu.model.units;
+package ru.dgu.model.objects.units;
 
 
 import ru.dgu.model.map.tiles.Tile;
+import ru.dgu.model.objects.units.imperium.ImperialGuard;
+import ru.dgu.model.types.ObjectType;
 
 public class UnitOperations
 {
@@ -18,6 +20,10 @@ public class UnitOperations
     public boolean isPassable(Unit unit, Tile tile)
     {
         return true;//Пока будем считать, что все юниты могут ходить по всем тайлам
+        //return unit.
     }
 
+    public static Unit createImperialGuard(){
+        return new ImperialGuard();
+    }
 }

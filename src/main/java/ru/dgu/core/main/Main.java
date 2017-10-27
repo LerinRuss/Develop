@@ -1,7 +1,7 @@
 package ru.dgu.core.main;
 
 import ru.dgu.controler.TileTextureLoader;
-import ru.dgu.model.Loupe;
+import ru.dgu.view.gui.Loupe;
 import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.map.TileByEnum;
 import ru.dgu.view.gui.Drawer;

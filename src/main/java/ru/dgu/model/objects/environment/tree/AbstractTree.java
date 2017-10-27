@@ -1,9 +1,10 @@
-package ru.dgu.model.enviroment.tree;
+package ru.dgu.model.objects.environment.tree;
 
-import ru.dgu.model.AbstractObjectOnTile;
+import ru.dgu.model.objects.AbstractObjectOnTile;
+import ru.dgu.model.objects.environment.EnvironmentObject;
 import ru.dgu.model.utils.coordinates.IntegerCoordinates;
 
-public abstract class AbstractTree extends AbstractObjectOnTile
+public abstract class AbstractTree extends EnvironmentObject
 {
     private IntegerCoordinates coordinates;
 
