@@ -22,20 +22,34 @@ public class ModelCore
     private static BidiMap<Tile, AbstractObjectOnTile> objectTileBidiMap;
     private static AbstractMap currentMap;
 
-    public static void createMap(int size){
+    public static int getCurrentMapSize(){
+        return currentMap.getSize();
+    }
+
+    public static TileType getTileType(int x, int y){
+        return currentMap.getTileType(x,y);
+    }
+
+    public static void createMap(int size)
+    {
         currentMap = MapOperations.createMap(size);
     }
 
-    public static void setCurrentMap(AbstractMap map){
+    public static void setCurrentMap(AbstractMap map)
+    {
         currentMap = map;
     }
 
-    public static boolean outOfMapBound(IntegerCoordinates coordinates){
+    public static boolean outOfMapBound(IntegerCoordinates coordinates)
+    {
         return outOfMapBound(coordinates.getX(), coordinates.getY());
     }
-    public static boolean outOfMapBound(int x, int y){
+
+    public static boolean outOfMapBound(int x, int y)
+    {
         return x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize();
     }
+
     private static void checkCoordinate(int x, int y) throws MapException
     {
         if (x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize()) {

@@ -1,4 +1,13 @@
 package ru.dgu.model.objects;
 
-public abstract class AbstractObjectOnTile {
+import ru.dgu.model.types.ObjectType;
+
+public abstract class AbstractObjectOnTile
+{
+    private ObjectType type;
+
+    public void setType(ObjectType type)
+    {
+        this.type = type;
+    }
 }

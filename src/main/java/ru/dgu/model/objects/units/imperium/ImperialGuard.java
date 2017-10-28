@@ -1,6 +1,7 @@
 package ru.dgu.model.objects.units.imperium;
 
 import ru.dgu.model.objects.units.Unit;
+import ru.dgu.model.types.ObjectType;
 
 public class ImperialGuard extends Unit
 {
@@ -30,6 +31,7 @@ public class ImperialGuard extends Unit
     //Скорость - 1
     //Максимальное количество - 9
     public ImperialGuard(){
+        setType(ObjectType.IMPERIAL_GUARD);
         setHealthpoint(ALL_HEALTH_POINT);
         currentNumberOfWarrior = MAX_NUMBER_OF_WARRIOR;
         setMorale(maxMorale);

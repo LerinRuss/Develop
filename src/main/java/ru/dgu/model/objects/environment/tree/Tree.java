@@ -12,6 +12,7 @@ public class Tree extends EnvironmentObject
     private static final Map<TileType, Integer> growPointFromTile;
     private Tile tile;
     private int growthPoint;
+    private TreeState state;
 
     static {
         growPointFromTile = new HashMap<>();
@@ -24,7 +25,8 @@ public class Tree extends EnvironmentObject
     private static final int SHRUB_POINT = 100;
     private static final int TREE_POINT = 300;
 
-    public Tree(){
+    public Tree()
+    {
         this.growthPoint = 0;
     }
 
@@ -34,9 +36,11 @@ public class Tree extends EnvironmentObject
         this.growthPoint = 0;
     }
 
-    public static void grow(Tree tree){
-        tree.growthPoint += growPointFromTile.get(tree.tile.getType());
+    public void grow()
+    {
+        growthPoint += growPointFromTile.get(tile.getType());
 
     }
+
 
 }
