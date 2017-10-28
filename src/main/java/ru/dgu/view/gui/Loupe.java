@@ -1,19 +1,39 @@
 package ru.dgu.view.gui;
 
-public class Loupe {
-    private static Loupe loupe;
+import ru.dgu.controler.CallMethodException;
 
-    private final int width, height;
+public class Loupe {
+    private int width, height;
     private int x, y;
+    private static boolean generated;
 
     private Loupe(final int x, final int y, final int width, final int height){
         setX(x);
         setY(y);
-        this.width = width;
-        this.height = height;
+        setWidth(width);
+        setHeight(height);
     }
     public static Loupe create(final int x, final int y, final int width, final int height) {
-        return loupe == null ? loupe = new Loupe(x, y, width, height) : loupe;
+        if(generated)
+            throw new CallMethodException("Loupe is already generated");
+        final Loupe loupe = new Loupe(x, y, width, height);
+        generated = true;
+        return loupe;
+    }
+
+    public void resize(final int x, final int y, final int delta){
+        setX(x);
+        setY(y);
+        setWidth(getWidth() + delta + delta);
+        setHeight(getHeight() + delta + delta);
+    }
+
+    public void addX(final int dx){
+        setX(getX() + dx);
+    }
+
+    public void addY(final int dy){
+        setY(getY() + dy);
     }
 
     public int getX() {
@@ -38,5 +58,23 @@ public class Loupe {
 
     public int getHeight() {
         return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return "Loupe{" +
+                "width=" + width +
+                ", height=" + height +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

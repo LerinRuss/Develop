@@ -10,6 +10,7 @@ import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.AbstractObjectOnTile;
 import ru.dgu.model.types.ObjectType;
+import ru.dgu.model.utils.coordinates.IntegerCoordinates;
 
 public class ModelCore
 {
@@ -30,6 +31,12 @@ public class ModelCore
         currentMap = map;
     }
 
+    public static boolean outOfMapBound(IntegerCoordinates coordinates){
+        return outOfMapBound(coordinates.getX(), coordinates.getY());
+    }
+    public static boolean outOfMapBound(int x, int y){
+        return x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize();
+    }
     private static void checkCoordinate(int x, int y) throws MapException
     {
         if (x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize()) {

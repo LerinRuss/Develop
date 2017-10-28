@@ -1,5 +1,6 @@
 package ru.dgu.view.gui;
 
+import ru.dgu.controler.TileTextureLoader;
 import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.utils.Transfer;
 import ru.dgu.model.utils.coordinates.IntegerCoordinates;
@@ -7,14 +8,15 @@ import ru.dgu.model.utils.coordinates.IntegerCoordinates;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Drawer extends BufferedImage{
-    private static Drawer drawer;
+public class MapLoupeDrawer extends BufferedImage{
+    private static MapLoupeDrawer mapLoupeDrawer;
 
     private final MapByEnumArray mapByEnumArray;
     private final Loupe loupe;
     private final int tileSize;
+    private Accentuation accentuation;
 
-    private Drawer(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
+    private MapLoupeDrawer(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
         super(mapByEnumArray.getSize() * tileSize, mapByEnumArray.getSize() * tileSize, BufferedImage.TYPE_INT_ARGB);
         if(tileSize <= 0)
             throw new IllegalArgumentException("TileSize must be greater 0");
@@ -24,8 +26,8 @@ public class Drawer extends BufferedImage{
         this.tileSize = tileSize;
     }
 
-    public static Drawer create(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
-        return drawer == null ? drawer = new Drawer(mapByEnumArray,loupe, tileSize) : drawer;
+    public static MapLoupeDrawer create(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
+        return mapLoupeDrawer == null ? mapLoupeDrawer = new MapLoupeDrawer(mapByEnumArray,loupe, tileSize) : mapLoupeDrawer;
     }
 
     /*
@@ -47,11 +49,20 @@ public class Drawer extends BufferedImage{
         final int yEnd = Math.min(mapByEnumArray.getSize() - 1, endCoordinates.getY());
 
         Graphics g = getGraphics();
-        for(int x = xStart; x < xEnd; x++){
-            for(int y = yStart; y < yEnd; y++){
-                final BufferedImage texture = mapByEnumArray.getTile(x,y).getType().getTexture();
+        for(int x = xStart; x <= xEnd; x++){
+            for(int y = yStart; y <= yEnd; y++){
+                final BufferedImage texture = TileTextureLoader.getTexture(mapByEnumArray.getTile(x,y).getType());
                 g.drawImage(texture, x * tileSize, y * tileSize, tileSize, tileSize, null);
             }
         }
+        accentuation.paint(g);
+    }
+
+    public Loupe getLoupe() {
+        return loupe;
+    }
+
+    public void setAccentuation(final Accentuation accentuation){
+        this.accentuation = accentuation;
     }
 }

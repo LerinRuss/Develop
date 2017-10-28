@@ -1,20 +1,19 @@
 package ru.dgu.controler;
 
 import org.junit.Test;
+import ru.dgu.core.main.Main;
+import ru.dgu.model.map.tiles.TileType;
 
-import java.awt.image.BufferedImage;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class TileByEnumTextureLoaderTest
 {
     @Test
     public void load() throws Exception {
-        TileTextureLoader.load();
-        final BufferedImage[] textures = TileTextureLoader.getTextures();
+        TileTextureLoader.load(Main.TILE_SIZE);
 
-        for (BufferedImage texture : textures) {
-            assertNotNull(texture);
+        for (TileType tile : TileType.values()) {
+            assertNotNull(TileTextureLoader.getTexture(tile));
         }
     }
 }
