@@ -4,22 +4,22 @@ import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
 import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
-import ru.dgu.model.exceptions.ObjectOnTileException;
-import ru.dgu.model.map.tiles.TileType;
-import ru.dgu.model.objects.AbstractObjectOnTile;
+import ru.dgu.model.exceptions.ModelException;
 import ru.dgu.model.map.AbstractMap;
 import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.map.tiles.Tile;
+import ru.dgu.model.map.tiles.TileType;
+import ru.dgu.model.objects.AbstractObjectOnTile;
 import ru.dgu.model.types.ObjectType;
 
 public class ModelCore
 {
     static {
-        unitTileBidiMap = new DualHashBidiMap();
+        objectTileBidiMap = new DualHashBidiMap();
         currentMap = new MapByEnumArray(10, 10);
     }
 
-    private static BidiMap<Tile, AbstractObjectOnTile> unitTileBidiMap;
+    private static BidiMap<Tile, AbstractObjectOnTile> objectTileBidiMap;
     private static AbstractMap currentMap;
 
     public static AbstractMap getCurrentMap()
@@ -43,13 +43,45 @@ public class ModelCore
 
     public static AbstractObjectOnTile objectOnTile(int x, int y) throws MapException
     {
-        checkCoordinate(x,y);
-        return unitTileBidiMap.get(currentMap.getTile(x, y));
+        checkCoordinate(x, y);
+        return objectTileBidiMap.get(currentMap.getTile(x, y));
     }
 
-    public static void addObjectOnTile(ObjectType type, int x, int y) throws ObjectOnTileException
+    public static void addObjectOnTile(ObjectType type, int x, int y) throws ModelException
     {
-        unitTileBidiMap.put(currentMap.getTile(x, y), ObjectType.createObject(type));
+        checkCoordinate(x, y);
+        objectTileBidiMap.put(currentMap.getTile(x, y), ObjectType.createObject(type));
+    }
+
+    public static void deleteObjectIfExist(AbstractObjectOnTile object)
+    {
+        if (objectTileBidiMap.containsValue(object)) {
+            deleteObject(object);
+        }
+    }
+
+    public static void deleteObject(AbstractObjectOnTile object)
+    {
+        objectTileBidiMap.removeValue(object);
+    }
+
+    public static void deleteObjectIfExist(int x, int y) throws MapException
+    {
+        checkCoordinate(x, y);
+        Tile tile = currentMap.getTile(x, y);
+        if (objectTileBidiMap.containsKey(tile)) {
+            deleteObject(tile);
+        }
+    }
+
+    public static void deleteObject(int x, int y)
+    {
+        deleteObject(currentMap.getTile(x, y));
+    }
+
+    public static void deleteObject(Tile tile)
+    {
+        objectTileBidiMap.remove(tile);
     }
 
 }
