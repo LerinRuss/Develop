@@ -10,14 +10,12 @@ public class MapByEnumArray extends AbstractMap
 {
     private final Tile[][] map;
 
-    public MapByEnumArray(final int width, final int height)
+    public MapByEnumArray(final int size)
     {
-        if (width <= 0)
-            throw new IllegalArgumentException("width less or equal 0");
-        if (height <= 0)
-            throw new IllegalArgumentException("height less or equal 0");
+        if (size <= 0)
+            throw new IllegalArgumentException("Size less or equal 0 ");
 
-        map = new Tile[width][height];
+        map = new Tile[size][size];
         fillMap(Constants.DEFAULT_TILE_TYPE);
     }
 
@@ -34,7 +32,6 @@ public class MapByEnumArray extends AbstractMap
     public void setTile(Tile tile, int x, int y)
     {
         map[x][y] = tile;
-
     }
 
     public Tile getTile(final int x, final int y)

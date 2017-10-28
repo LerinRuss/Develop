@@ -24,7 +24,7 @@ public class Main {
         final Accentuation accentuation = Accentuation.create(TILE_SIZE);
         final Loupe loupe = Loupe.create(width/2,height/2,width,width);
         final Window window = createWindow(width, height, loupe, accentuation, mapSize);
-        final MapByEnumArray mapByEnumArray = new MapByEnumArray(mapSize,mapSize);
+        final MapByEnumArray mapByEnumArray = new MapByEnumArray(mapSize);
         final MapLoupeDrawer mapLoupeDrawer = MapLoupeDrawer.create(mapByEnumArray,loupe,20);
         mapLoupeDrawer.setAccentuation(accentuation);
         window.setVisible(true);

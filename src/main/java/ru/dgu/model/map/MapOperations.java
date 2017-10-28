@@ -46,4 +46,8 @@ public class MapOperations
         }
         return castMap;
     }
+
+    public static AbstractMap createMap(int size){
+        return new MapByEnumArray(size);
+    }
 }

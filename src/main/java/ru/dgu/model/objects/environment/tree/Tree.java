@@ -24,6 +24,10 @@ public class Tree extends EnvironmentObject
     private static final int SHRUB_POINT = 100;
     private static final int TREE_POINT = 300;
 
+    public Tree(){
+        this.growthPoint = 0;
+    }
+
     public Tree(Tile tile)
     {
         this.tile = tile;

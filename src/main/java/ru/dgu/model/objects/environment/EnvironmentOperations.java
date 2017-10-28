@@ -1,6 +1,5 @@
 package ru.dgu.model.objects.environment;
 
-import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.objects.environment.tree.Tree;
 
 public class EnvironmentOperations
@@ -8,8 +7,8 @@ public class EnvironmentOperations
     private EnvironmentOperations(){
 
     }
-    public static EnvironmentObject createTree(Tile tile){
-        return new Tree(tile);
+    public static EnvironmentObject createTree(){
+        return new Tree();
     }
 
 }

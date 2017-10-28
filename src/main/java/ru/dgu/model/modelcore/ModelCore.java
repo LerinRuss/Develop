@@ -6,6 +6,7 @@ import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.exceptions.ModelException;
 import ru.dgu.model.map.AbstractMap;
+import ru.dgu.model.map.MapOperations;
 import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.AbstractObjectOnTile;
@@ -16,15 +17,13 @@ public class ModelCore
 {
     static {
         objectTileBidiMap = new DualHashBidiMap();
-
     }
 
     private static BidiMap<Tile, AbstractObjectOnTile> objectTileBidiMap;
     private static AbstractMap currentMap;
 
-    public static AbstractMap getCurrentMap()
-    {
-        return currentMap;
+    public static void createMap(int size){
+        currentMap = MapOperations.createMap(size);
     }
 
     public static void setCurrentMap(AbstractMap map){

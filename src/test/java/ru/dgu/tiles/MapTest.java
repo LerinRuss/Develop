@@ -9,20 +9,15 @@ import static org.junit.Assert.*;
 public class MapTest {
 
     private MapByEnumArray mapByEnumArray;
-    private final int width = 25;
-    private final int height = 10;
+    private final int size = 25;
 
     @Before
     public void init() throws Exception {
-        mapByEnumArray = new MapByEnumArray(width,height);
+        mapByEnumArray = new MapByEnumArray(size);
     }
 
     @Test
-    public void getWidthTest() throws Exception {
-        assertEquals(width, mapByEnumArray.getSize());
-    }
-    @Test
-    public void getHeightTest() throws Exception {
-        assertEquals(height, mapByEnumArray.getSize());
+    public void getSizeTest() throws Exception {
+        assertEquals(size, mapByEnumArray.getSize());
     }
 }

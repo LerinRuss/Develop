@@ -13,7 +13,7 @@ public enum ObjectType
     {
         switch (type){
             case TREE:{
-                return EnvironmentOperations.createConcreateTree();
+                return EnvironmentOperations.createTree();
             }
             case IMPERIAL_GUARD:{
                 return UnitOperations.createImperialGuard();
