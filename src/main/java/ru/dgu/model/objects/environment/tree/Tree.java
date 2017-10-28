@@ -4,8 +4,9 @@ import ru.dgu.model.objects.environment.EnvironmentObject;
 import ru.dgu.model.objects.environment.tree.state.SproutState;
 import ru.dgu.model.objects.environment.tree.state.TreesState;
 import ru.dgu.model.objects.environment.tree.state.TreeStateEnum;
+import ru.dgu.model.utils.action.Action;
 
-public class Tree extends EnvironmentObject
+public class Tree extends EnvironmentObject implements Action
 {
     private int growthPoint;
     private TreesState state;
@@ -36,8 +37,13 @@ public class Tree extends EnvironmentObject
 
     public void grow()
     {
-
+        state.grow();
     }
 
 
+    @Override
+    public void action()
+    {
+        grow();
+    }
 }

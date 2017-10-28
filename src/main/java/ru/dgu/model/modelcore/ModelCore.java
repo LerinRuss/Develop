@@ -11,16 +11,22 @@ import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.AbstractObjectOnTile;
 import ru.dgu.model.types.ObjectType;
+import ru.dgu.model.utils.action.Action;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModelCore
 {
     static {
         objectTileBidiMap = new DualHashBidiMap();
+        actionList = new ArrayList<>();
     }
 
     private static BidiMap<Tile, AbstractObjectOnTile> objectTileBidiMap;
     private static AbstractMap currentMap;
+    private static List<Action> actionList;
 
     /**
      * Return side length of square map
@@ -160,6 +166,8 @@ public class ModelCore
      * Call this method to make the model one step
      */
     public static void doStep(){
-
+        for(Action item: actionList){
+            item.action();
+        }
     }
 }
