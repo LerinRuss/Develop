@@ -2,11 +2,9 @@ package ru.dgu.controler;
 
 import org.junit.Test;
 import ru.dgu.core.main.Main;
-import ru.dgu.tiles.Tile;
+import ru.dgu.model.map.tiles.TileType;
 
-import java.awt.image.BufferedImage;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class TileByEnumTextureLoaderTest
 {
@@ -14,7 +12,7 @@ public class TileByEnumTextureLoaderTest
     public void load() throws Exception {
         TileTextureLoader.load(Main.TILE_SIZE);
 
-        for (Tile tile : Tile.values()) {
+        for (TileType tile : TileType.values()) {
             assertNotNull(TileTextureLoader.getTexture(tile));
         }
     }

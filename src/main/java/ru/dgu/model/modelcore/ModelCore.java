@@ -11,6 +11,7 @@ import ru.dgu.model.map.AbstractMap;
 import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.types.ObjectType;
+import ru.dgu.model.utils.coordinates.IntegerCoordinates;
 
 public class ModelCore
 {
@@ -27,6 +28,12 @@ public class ModelCore
         return currentMap;
     }
 
+    public static boolean outOfMapBound(IntegerCoordinates coordinates){
+        return outOfMapBound(coordinates.getX(), coordinates.getY());
+    }
+    public static boolean outOfMapBound(int x, int y){
+        return x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize();
+    }
     private static void checkCoordinate(int x, int y) throws MapException
     {
         if (x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize()) {
