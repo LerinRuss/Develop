@@ -1,44 +1,41 @@
 package ru.dgu.model.objects.environment.tree;
 
-import ru.dgu.model.map.tiles.Tile;
-import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.environment.EnvironmentObject;
-
-import java.util.HashMap;
-import java.util.Map;
+import ru.dgu.model.objects.environment.tree.state.SproutState;
+import ru.dgu.model.objects.environment.tree.state.TreesState;
+import ru.dgu.model.objects.environment.tree.state.TreeStateEnum;
 
 public class Tree extends EnvironmentObject
 {
-    private static final Map<TileType, Integer> growPointFromTile;
-    private Tile tile;
     private int growthPoint;
-    private TreeState state;
-
-    static {
-        growPointFromTile = new HashMap<>();
-        growPointFromTile.put(TileType.GRASS, 25);
-        growPointFromTile.put(TileType.WATER, 20);
-        growPointFromTile.put(TileType.SAND, 5);
-        growPointFromTile.put(TileType.EMPTY, 0);
-    }
-
-    private static final int SHRUB_POINT = 100;
-    private static final int TREE_POINT = 300;
+    private TreesState state;
 
     public Tree()
     {
         this.growthPoint = 0;
+        this.state = new SproutState();
     }
 
-    public Tree(Tile tile)
+    public void increaceGrowthPoint(int count)
     {
-        this.tile = tile;
-        this.growthPoint = 0;
+        growthPoint += count;
+    }
+    public int getGrowthPoint(){
+        return growthPoint;
+    }
+
+    public TreeStateEnum getState()
+    {
+        return state.getState();
+    }
+
+    public void setState(TreesState state)
+    {
+        this.state = state;
     }
 
     public void grow()
     {
-        growthPoint += growPointFromTile.get(tile.getType());
 
     }
 
