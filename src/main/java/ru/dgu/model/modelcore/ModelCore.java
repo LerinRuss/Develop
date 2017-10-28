@@ -6,7 +6,6 @@ import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.exceptions.ModelException;
 import ru.dgu.model.map.AbstractMap;
-import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.AbstractObjectOnTile;
@@ -16,7 +15,7 @@ public class ModelCore
 {
     static {
         objectTileBidiMap = new DualHashBidiMap();
-        currentMap = new MapByEnumArray(10, 10);
+
     }
 
     private static BidiMap<Tile, AbstractObjectOnTile> objectTileBidiMap;
@@ -25,6 +24,10 @@ public class ModelCore
     public static AbstractMap getCurrentMap()
     {
         return currentMap;
+    }
+
+    public static void setCurrentMap(AbstractMap map){
+        currentMap = map;
     }
 
     private static void checkCoordinate(int x, int y) throws MapException
@@ -83,5 +86,4 @@ public class ModelCore
     {
         objectTileBidiMap.remove(tile);
     }
-
 }
