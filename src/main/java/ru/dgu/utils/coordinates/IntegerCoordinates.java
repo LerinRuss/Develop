@@ -1,4 +1,4 @@
-package ru.dgu.model.utils.coordinates;
+package ru.dgu.utils.coordinates;
 
 public interface IntegerCoordinates {
     int getX();

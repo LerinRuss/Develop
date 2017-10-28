@@ -8,7 +8,7 @@ import ru.dgu.model.objects.AbstractObjectOnTile;
  */
 public abstract class Unit extends AbstractObjectOnTile
 {
-    private int healthpoint;
+    private int healthPoint;
     //int allhealthpoint;
     //int maxNumberOfWarrior;
     private int currentNumberOfWarrior;
@@ -25,14 +25,14 @@ public abstract class Unit extends AbstractObjectOnTile
     private int currentDefence;
     public boolean wasNearBattle;
 
-    public int getHealthpoint()
+    public int getHealthPoint()
     {
-        return healthpoint;
+        return healthPoint;
     }
 
-    public void setHealthpoint(int healthPoint)
+    public void setHealthPoint(int healthPoint)
     {
-        this.healthpoint = healthPoint;
+        this.healthPoint = healthPoint;
     }
 
     public int getCurrentMorale()
@@ -54,6 +54,4 @@ public abstract class Unit extends AbstractObjectOnTile
     {
         this.currentDefence = currentDefence;
     }
-
-
 }

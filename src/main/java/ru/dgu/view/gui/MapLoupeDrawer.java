@@ -2,8 +2,8 @@ package ru.dgu.view.gui;
 
 import ru.dgu.controler.TileTextureLoader;
 import ru.dgu.model.map.MapByEnumArray;
-import ru.dgu.model.utils.Transfer;
-import ru.dgu.model.utils.coordinates.IntegerCoordinates;
+import ru.dgu.utils.coordinates.Transfer;
+import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

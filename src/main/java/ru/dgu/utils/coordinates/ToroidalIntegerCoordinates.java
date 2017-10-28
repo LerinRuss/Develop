@@ -1,4 +1,4 @@
-package ru.dgu.model.utils.coordinates;
+package ru.dgu.utils.coordinates;
 
 import ru.dgu.model.map.MapByEnumArray;
 

@@ -11,7 +11,7 @@ import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.objects.AbstractObjectOnTile;
 import ru.dgu.model.types.ObjectType;
-import ru.dgu.model.utils.coordinates.IntegerCoordinates;
+import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 public class ModelCore
 {
@@ -154,5 +154,12 @@ public class ModelCore
     public static void deleteObject(Tile tile)
     {
         objectTileBidiMap.remove(tile);
+    }
+
+    /**
+     * Call this method to make the model one step
+     */
+    public static void doStep(){
+
     }
 }

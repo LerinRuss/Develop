@@ -3,8 +3,8 @@ package ru.dgu.controler;
 import ru.dgu.core.main.Main;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.modelcore.ModelCore;
-import ru.dgu.model.utils.Transfer;
-import ru.dgu.model.utils.coordinates.IntegerCoordinates;
+import ru.dgu.utils.coordinates.Transfer;
+import ru.dgu.utils.coordinates.IntegerCoordinates;
 import ru.dgu.view.gui.Accentuation;
 import ru.dgu.view.gui.Loupe;
 

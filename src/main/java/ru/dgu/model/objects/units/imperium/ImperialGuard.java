@@ -32,7 +32,7 @@ public class ImperialGuard extends Unit
     //Максимальное количество - 9
     public ImperialGuard(){
         setType(ObjectType.IMPERIAL_GUARD);
-        setHealthpoint(ALL_HEALTH_POINT);
+        setHealthPoint(ALL_HEALTH_POINT);
         currentNumberOfWarrior = MAX_NUMBER_OF_WARRIOR;
         setMorale(maxMorale);
         setCurrentDefence(maxDefence);

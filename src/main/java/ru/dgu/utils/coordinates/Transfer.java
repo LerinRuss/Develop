@@ -1,6 +1,6 @@
-package ru.dgu.model.utils;
+package ru.dgu.utils.coordinates;
 
-import ru.dgu.model.utils.coordinates.IntegerCoordinates;
+import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 public class Transfer {
     private Transfer(){}
