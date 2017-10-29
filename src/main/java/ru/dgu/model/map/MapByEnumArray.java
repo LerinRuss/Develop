@@ -48,7 +48,7 @@ public class MapByEnumArray extends AbstractMap
     @Override
     public TileType getTileType(int x, int y)
     {
-        return null;
+        return map[x][y].getType();
     }
 
     @Override

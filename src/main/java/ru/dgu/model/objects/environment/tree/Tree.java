@@ -37,7 +37,7 @@ public class Tree extends EnvironmentObject implements Action
 
     public void grow()
     {
-        state.grow();
+        state.grow(this);
     }
 
 

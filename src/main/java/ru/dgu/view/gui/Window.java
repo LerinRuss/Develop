@@ -2,7 +2,6 @@ package ru.dgu.view.gui;
 
 import ru.dgu.controler.CallMethodException;
 import ru.dgu.core.main.Main;
-import ru.dgu.model.map.MapByEnumArray;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,7 @@ public class Window extends JFrame{
     public Window() {
         super("Engine");
     }
-    public void repaint(final MapLoupeDrawer desk,final MapByEnumArray map){
+    public void repaint(final MapLoupeDrawer desk,final int size){
         //super.repaint();
         Graphics g = getGraphics();
         final Loupe loupe = desk.getLoupe();
@@ -21,7 +20,7 @@ public class Window extends JFrame{
         final int rdX = loupe.getX() + loupe.getWidth()/2;
         final int rdY = loupe.getY() + loupe.getHeight()/2;
 
-        paintBorder(g,map, luX, luY, rdX, rdY);
+        paintBorder(g, size, luX, luY, rdX, rdY);
 
         g.drawImage(
                 desk,
@@ -31,7 +30,7 @@ public class Window extends JFrame{
         );
     }
 
-    private void paintBorder(final Graphics g, final MapByEnumArray map,
+    private void paintBorder(final Graphics g, final int size,
                              final int luX, final int luY,
                              final int rdX, final int rdY) {
 
@@ -42,10 +41,10 @@ public class Window extends JFrame{
 //        g.fillRect(0,0,getWidth(),getHeight());
         g.fillRect(0,0,getWidth(),-luY);
         g.fillRect(0, 0, -luX, getHeight());
-        final int x = getWidth() - (rdX - map.getSize() * Main.TILE_SIZE);
+        final int x = getWidth() - (rdX - size * Main.TILE_SIZE);
         if(x > 0)
             g.fillRect(x, 0, getWidth() - x, getHeight());
-        final int y = getHeight() - (rdY - map.getSize() * Main.TILE_SIZE);
+        final int y = getHeight() - (rdY - size * Main.TILE_SIZE);
         if(y > 0)
             g.fillRect(0, y, getWidth(), getHeight() - y);
 

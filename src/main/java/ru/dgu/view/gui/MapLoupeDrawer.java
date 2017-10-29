@@ -1,9 +1,9 @@
 package ru.dgu.view.gui;
 
 import ru.dgu.controler.TileTextureLoader;
-import ru.dgu.model.map.MapByEnumArray;
-import ru.dgu.utils.coordinates.Transfer;
+import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
+import ru.dgu.utils.coordinates.Transfer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,23 +11,23 @@ import java.awt.image.BufferedImage;
 public class MapLoupeDrawer extends BufferedImage{
     private static MapLoupeDrawer mapLoupeDrawer;
 
-    private final MapByEnumArray mapByEnumArray;
     private final Loupe loupe;
     private final int tileSize;
     private Accentuation accentuation;
+    private final int size; //!!!
 
-    private MapLoupeDrawer(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
-        super(mapByEnumArray.getSize() * tileSize, mapByEnumArray.getSize() * tileSize, BufferedImage.TYPE_INT_ARGB);
+    private MapLoupeDrawer(final  int size, final Loupe loupe, final int tileSize){
+        super(size * tileSize, size * tileSize, BufferedImage.TYPE_INT_ARGB);
         if(tileSize <= 0)
             throw new IllegalArgumentException("TileSize must be greater 0");
 
-        this.mapByEnumArray = mapByEnumArray;
+        this.size = size;
         this.loupe = loupe;
         this.tileSize = tileSize;
     }
 
-    public static MapLoupeDrawer create(final MapByEnumArray mapByEnumArray, final Loupe loupe, final int tileSize){
-        return mapLoupeDrawer == null ? mapLoupeDrawer = new MapLoupeDrawer(mapByEnumArray,loupe, tileSize) : mapLoupeDrawer;
+    public static MapLoupeDrawer create(final  int size, final Loupe loupe, final int tileSize){
+        return mapLoupeDrawer == null ? mapLoupeDrawer = new MapLoupeDrawer(size,loupe, tileSize) : mapLoupeDrawer;
     }
 
     /*
@@ -45,13 +45,13 @@ public class MapLoupeDrawer extends BufferedImage{
         final int loupeEndY = loupe.getY() + (loupe.getHeight()/2);
         final IntegerCoordinates endCoordinates = Transfer.transferCoordinates(tileSize, loupeEndX, loupeEndY);
 
-        final int xEnd = Math.min(mapByEnumArray.getSize() - 1, endCoordinates.getX());
-        final int yEnd = Math.min(mapByEnumArray.getSize() - 1, endCoordinates.getY());
+        final int xEnd = Math.min(size - 1, endCoordinates.getX());
+        final int yEnd = Math.min(size - 1, endCoordinates.getY());
 
         Graphics g = getGraphics();
         for(int x = xStart; x <= xEnd; x++){
             for(int y = yStart; y <= yEnd; y++){
-                final BufferedImage texture = TileTextureLoader.getTexture(mapByEnumArray.getTile(x,y).getType());
+                final BufferedImage texture = TileTextureLoader.getTexture(ModelCore.getTileType(x,y));
                 g.drawImage(texture, x * tileSize, y * tileSize, tileSize, tileSize, null);
             }
         }

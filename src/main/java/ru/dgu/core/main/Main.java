@@ -4,8 +4,8 @@ import ru.dgu.controler.KeyControl;
 import ru.dgu.controler.MouseControl;
 import ru.dgu.controler.TileTextureLoader;
 import ru.dgu.core.settings.KeySetting;
-import ru.dgu.model.map.MapByEnumArray;
 import ru.dgu.model.map.tiles.TileType;
+import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.view.gui.Accentuation;
 import ru.dgu.view.gui.Loupe;
 import ru.dgu.view.gui.MapLoupeDrawer;
@@ -24,14 +24,14 @@ public class Main {
         final Accentuation accentuation = Accentuation.create(TILE_SIZE);
         final Loupe loupe = Loupe.create(width/2,height/2,width,width);
         final Window window = createWindow(width, height, loupe, accentuation, mapSize);
-        final MapByEnumArray mapByEnumArray = new MapByEnumArray(mapSize);
-        final MapLoupeDrawer mapLoupeDrawer = MapLoupeDrawer.create(mapByEnumArray,loupe,20);
+        ModelCore.createMap(mapSize);
+        final MapLoupeDrawer mapLoupeDrawer = MapLoupeDrawer.create(mapSize,loupe,20);
         mapLoupeDrawer.setAccentuation(accentuation);
         window.setVisible(true);
 
         Timer timer = new Timer(20, a -> {
             mapLoupeDrawer.repaint();
-            window.repaint(mapLoupeDrawer, mapByEnumArray);
+            window.repaint(mapLoupeDrawer, mapSize);
         });
         timer.start();
 
