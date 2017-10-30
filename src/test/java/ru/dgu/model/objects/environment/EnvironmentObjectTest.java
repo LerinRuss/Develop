@@ -3,6 +3,7 @@ package ru.dgu.model.objects.environment;
 import org.junit.Test;
 import ru.dgu.model.constants.Constants;
 import ru.dgu.model.objects.environment.tree.Tree;
+import ru.dgu.model.objects.environment.tree.state.DeadTreeState;
 import ru.dgu.model.objects.environment.tree.state.ShrubState;
 import ru.dgu.model.objects.environment.tree.state.SproutState;
 import ru.dgu.model.objects.environment.tree.state.TreeState;
@@ -37,4 +38,14 @@ public class EnvironmentObjectTest
         }
         assertEquals(new TreeState().getState(), tree.getState());
     }
+    @Test
+    public void treeGrowDeadTreeStateTest()
+    {
+        Tree tree = new Tree();
+        for (int i = 0; i < TreeState.DEAD_TREE_POINT / Constants.GROW_POINT_PER_STEP; i++) {
+            tree.grow();
+        }
+        assertEquals(new DeadTreeState().getState(), tree.getState());
+    }
+
 }

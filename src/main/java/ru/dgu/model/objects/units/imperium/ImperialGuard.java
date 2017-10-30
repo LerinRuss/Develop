@@ -18,8 +18,6 @@ public class ImperialGuard extends Unit
     private static final int DISTANCE_OF_SHOOT = 5;
     private static final int maxMorale = 100;
     private static final int maxDefence = 100;
-    private int x;
-    private int y;
     public boolean wasNearBattle;
     //Название - Отряд Имперских Гвардейцев
     //Количество здоровья - 100
@@ -36,5 +34,37 @@ public class ImperialGuard extends Unit
         currentNumberOfWarrior = MAX_NUMBER_OF_WARRIOR;
         setMorale(maxMorale);
         setCurrentDefence(maxDefence);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ImperialGuard{" +
+                "healthpoint=" + healthpoint +
+                ", numberOfWarrior=" + currentNumberOfWarrior +
+                ", wasNearBattle=" + wasNearBattle +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ImperialGuard that = (ImperialGuard) o;
+
+        if (healthpoint != that.healthpoint) return false;
+        if (currentNumberOfWarrior != that.currentNumberOfWarrior) return false;
+        return wasNearBattle == that.wasNearBattle;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = healthpoint;
+        result = 31 * result + currentNumberOfWarrior;
+        result = 31 * result + (wasNearBattle ? 1 : 0);
+        return result;
     }
 }

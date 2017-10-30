@@ -46,4 +46,33 @@ public class Tree extends EnvironmentObject implements Action
     {
         grow();
     }
+
+    @Override
+    public String toString()
+    {
+        return "Tree{" +
+                "growthPoint=" + growthPoint +
+                ", state=" + state.getState() +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Tree tree = (Tree) o;
+
+        if (growthPoint != tree.growthPoint) return false;
+        return state.getState() != null ? state.getState().equals(tree.state.getState()) : tree.state == null;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = growthPoint;
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        return result;
+    }
 }
