@@ -9,7 +9,7 @@ public class ShrubState extends TreesState
     @Override
     public TreeStateEnum getState()
     {
-        return TreeStateEnum.TREE;
+        return TreeStateEnum.SHRUB;
     }
 
     @Override

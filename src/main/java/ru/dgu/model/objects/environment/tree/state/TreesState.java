@@ -7,6 +7,7 @@ public abstract class TreesState
 {
     public static final int SHRUB_POINT = 100;
     public static final int TREE_POINT = 300;
+    public static final int DEAD_TREE_POINT = 700;
     public abstract TreeStateEnum getState();
     public abstract void grow(Tree tree);
 

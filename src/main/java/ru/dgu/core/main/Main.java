@@ -19,7 +19,8 @@ public class Main {
         final int mapSize = 60;
 
         loadTextures();
-
+        //final Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        //final int width = (int)size.getHeight(), height = (int) size.getHeight();
         final int width = 600, height = 600;
         final Accentuation accentuation = Accentuation.create(TILE_SIZE);
         final Loupe loupe = Loupe.create(width/2,height/2,width,width);

@@ -1,7 +1,7 @@
 package ru.dgu.model.map;
 
 
-import ru.dgu.model.constants.Constants;
+import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.map.tiles.ConcreteTile;
 import ru.dgu.model.map.tiles.Tile;
 import ru.dgu.model.map.tiles.TileType;
@@ -13,17 +13,21 @@ public class MapByEnumArray extends AbstractMap
     public MapByEnumArray(final int size)
     {
         if (size <= 0)
-            throw new IllegalArgumentException("Size less or equal 0 ");
-
+            throw new MapException("Size less or equal 0 ");
         map = new Tile[size][size];
-        fillMap(Constants.DEFAULT_TILE_TYPE);
+        for (int x = 0; x < map.length; x++) {
+            for (int y = 0; y < map[0].length; y++) {
+                setTile(new ConcreteTile(TileType.GRASS), x, y);
+            }
+        }
+
     }
 
-    private void fillMap(final TileType type)
+    public void fill(final TileType type)
     {
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
-                setTile(new ConcreteTile(type), x, y);
+                setTileType(type, x, y);
             }
         }
     }

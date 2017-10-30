@@ -19,4 +19,6 @@ public abstract class AbstractMap
     {
         return Math.max(Math.abs(x1 - x2), Math.abs(y1 - y2));
     }
+
+    public abstract void fill(TileType tileType);
 }
