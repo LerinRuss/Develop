@@ -55,15 +55,6 @@ public class ModelCore
     }
 
     /**
-     * Set transmitted map current map
-     * @param map - make this map current
-     */
-    public static void setCurrentMap(AbstractMap map)
-    {
-        currentMap = map;
-    }
-
-    /**
      * @param coordinates
      * @return <tt>true</tt> if and only if coordinates is not belong current map
      */
@@ -114,7 +105,7 @@ public class ModelCore
      * @return object on given coordinate
      * @throws MapException if and only if coordinate is bot belong current map
      */
-    public static AbstractObjectOnTile objectOnTile(int x, int y) throws MapException
+    public static AbstractObjectOnTile getObjectOnTile(int x, int y) throws MapException
     {
         checkCoordinate(x, y);
         return objectTileBidiMap.get(currentMap.getTile(x, y));
