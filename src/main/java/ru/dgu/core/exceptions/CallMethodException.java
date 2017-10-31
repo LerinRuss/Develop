@@ -1,4 +1,4 @@
-package ru.dgu.controler;
+package ru.dgu.core.exceptions;
 
 /*
     thrown when method is been called invalid times.

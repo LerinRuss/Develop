@@ -4,9 +4,10 @@ import ru.dgu.model.map.tiles.TileType;
 
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
+import java.util.Map;
 
 public class KeySetting {
-    private static final HashMap<Integer, TileType> keys = new HashMap<>();
+    private static final Map<Integer, TileType> keys = new HashMap<>();
     static {
         keys.put(KeyEvent.VK_1,TileType.GRASS);
         keys.put(KeyEvent.VK_2,TileType.WATER);
@@ -16,7 +17,7 @@ public class KeySetting {
     }
     private KeySetting(){}
 
-    public static HashMap<Integer, TileType> getKeysSetting(){
+    public static Map<Integer, TileType> getKeysSetting(){
         return keys;
     }
 }

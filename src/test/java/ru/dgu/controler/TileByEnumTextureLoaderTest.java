@@ -1,6 +1,7 @@
 package ru.dgu.controler;
 
 import org.junit.Test;
+import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.core.main.Main;
 import ru.dgu.model.map.tiles.TileType;
 

@@ -1,6 +1,6 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.controler.TileTextureLoader;
+import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 import ru.dgu.utils.coordinates.Transfer;

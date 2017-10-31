@@ -1,4 +1,4 @@
-package ru.dgu.controler;
+package ru.dgu.core.loaders;
 
 public class LoadingException extends RuntimeException {
     public LoadingException(String message) {
