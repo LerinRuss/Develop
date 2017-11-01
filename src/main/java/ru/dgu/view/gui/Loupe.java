@@ -1,9 +1,10 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.core.controler.Scrollable;
+import ru.dgu.core.controler.mouse.Scalable;
+import ru.dgu.core.controler.mouse.Scrollable;
 import ru.dgu.core.exceptions.CallMethodException;
 
-public class Loupe implements Scrollable {
+public class Loupe implements Scrollable, Scalable {
     private int width, height;
     private int x, y;
     private static boolean generated;

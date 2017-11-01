@@ -1,20 +1,20 @@
-package ru.dgu.core.controler;
+package ru.dgu.core.controler.mouse;
 
 import ru.dgu.core.exceptions.CallMethodException;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-class MouseScrolling extends MouseAdapter {
+public class MouseScrolling extends MouseAdapter {
     private static boolean created = false;
 
-    private Scrollable controllable;
+    private final Scrollable controllable;
     private int oldX, oldY;
 
-    MouseScrolling(final Scrollable controllable) {
+    public MouseScrolling(final Scrollable controllable) {
         if(created)
             throw new CallMethodException("MouseScrolling is already exist");
-        setControllable(controllable);
+        this.controllable = controllable;
         created = true;
     }
 
@@ -33,9 +33,5 @@ class MouseScrolling extends MouseAdapter {
 
         oldX = e.getX();
         oldY = e.getY();
-    }
-
-    private void setControllable(final Scrollable controllable){
-        this.controllable = controllable;
     }
 }

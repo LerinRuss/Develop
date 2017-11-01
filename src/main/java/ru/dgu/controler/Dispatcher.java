@@ -11,7 +11,7 @@ public class Dispatcher implements Switcher {
     private final KeyControl keyControl;
 
     private Dispatcher(final MouseAdapter mouseAdapter,
-                       final KeyAdapter keyAdapter){
+                       final KeyAdapter keyAdapter) {
         mouseControl = new MouseControl(mouseAdapter);
         keyControl = new KeyControl(keyAdapter);
     }
