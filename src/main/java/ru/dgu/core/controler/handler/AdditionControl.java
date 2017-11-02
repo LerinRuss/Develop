@@ -3,7 +3,7 @@ package ru.dgu.core.controler.handler;
 import ru.dgu.controler.MultiAdapter;
 import ru.dgu.controler.State;
 import ru.dgu.controler.Switcher;
-import ru.dgu.core.controler.Addition;
+import ru.dgu.core.controler.Changer;
 import ru.dgu.core.controler.mouse.MouseMoveControl;
 import ru.dgu.core.controler.mouse.MouseScaleControl;
 import ru.dgu.model.map.tiles.TileType;
@@ -18,7 +18,7 @@ class AdditionControl extends MultiAdapter{
     private final MouseScaleControl mouseScaleControl;
     private final MouseMoveControl mouseMoveControl;
     private final Switcher switcher;
-    private final Addition addition;
+    private final Changer addition;
     private final Map<Integer, TileType> tileTypesMap;
     private final Map<Integer, ObjectType> objectTypeMap;
 
@@ -28,7 +28,7 @@ class AdditionControl extends MultiAdapter{
 
     AdditionControl(MouseScaleControl mouseScaleControl,
                            MouseMoveControl mouseMoveControl,
-                           Switcher switcher, Addition addition,
+                           Switcher switcher, Changer addition,
                            Map<Integer, TileType> tileTypesMap,
                            Map<Integer, ObjectType> objectTypeMap) {
         if(tileTypesMap.isEmpty())

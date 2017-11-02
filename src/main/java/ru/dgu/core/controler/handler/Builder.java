@@ -2,7 +2,7 @@ package ru.dgu.core.controler.handler;
 
 import ru.dgu.controler.MultiAdapter;
 import ru.dgu.controler.Switcher;
-import ru.dgu.core.controler.Addition;
+import ru.dgu.core.controler.Changer;
 import ru.dgu.core.controler.mouse.*;
 import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.model.map.tiles.TileType;
@@ -20,7 +20,7 @@ public class Builder {
                                 final CursorMovable cursorMovable,
                                 final Scrollable scrollable,
                                 final Switcher switcher,
-                                final Addition addition,
+                                final Changer addition,
                                 final Map<Integer, TileType> tileTypeMap,
                                 final Map<Integer, ObjectType> objectTypeMap) {
         if (built)

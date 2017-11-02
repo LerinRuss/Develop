@@ -2,6 +2,7 @@ package ru.dgu.model.modelcore;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
+import ru.dgu.core.controler.Changer;
 import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.exceptions.ModelException;
@@ -30,9 +31,11 @@ public class ModelCore
 
     /**
      * Return side length of square map
+     *
      * @return current map size
      */
-    public static int getCurrentMapSize(){
+    public static int getCurrentMapSize()
+    {
         return currentMap.getSize();
     }
 
@@ -41,12 +44,14 @@ public class ModelCore
      * @param y - Y coordinate of tile
      * @return type of tile by coordinate x, y.
      */
-    public static TileType getTileType(int x, int y){
-        return currentMap.getTileType(x,y);
+    public static TileType getTileType(int x, int y)
+    {
+        return currentMap.getTileType(x, y);
     }
 
     /**
      * Now create default map. Later add possibility to tune creating map.
+     *
      * @param size - size of creating map.
      */
     public static void createMap(int size)
@@ -88,9 +93,10 @@ public class ModelCore
 
     /**
      * Setter for TileType by coordinates tile on current map
+     *
      * @param tileType - new TileType for setting
-     * @param x - x coordinate of tile
-     * @param y - y coordinate of tile
+     * @param x        - x coordinate of tile
+     * @param y        - y coordinate of tile
      * @throws MapException if and only if coordinate is not belong current map
      */
     public static void setTileType(TileType tileType, int x, int y) throws MapException
@@ -113,9 +119,10 @@ public class ModelCore
 
     /**
      * Create a new object and add it to the given coordinate
+     *
      * @param type - type for new object
-     * @param x - x coordinate of tile
-     * @param y - y coordinate of tile
+     * @param x    - x coordinate of tile
+     * @param y    - y coordinate of tile
      * @throws ModelException if and only if coordinate is bot belong current map
      */
     public static void addObjectOnTile(ObjectType type, int x, int y) throws ModelException
@@ -126,6 +133,7 @@ public class ModelCore
 
     /**
      * Delete given object from map.
+     *
      * @param object - onject for deleting
      */
     public static void deleteObject(AbstractObjectOnTile object)
@@ -135,17 +143,19 @@ public class ModelCore
 
     /**
      * Delete object on given coordinate
+     *
      * @param x
      * @param y
      */
     public static void deleteObject(int x, int y) throws MapException
     {
-        checkCoordinate(x,y);
+        checkCoordinate(x, y);
         deleteObject(currentMap.getTile(x, y));
     }
 
     /**
      * Delete object on given tile
+     *
      * @param tile - tile
      */
     public static void deleteObject(Tile tile)
@@ -156,9 +166,28 @@ public class ModelCore
     /**
      * Call this method to make the model one step
      */
-    public static void doStep(){
-        for(Action item: actionList){
+    public static void doStep()
+    {
+        for (Action item : actionList) {
             item.action();
         }
+    }
+
+    public static Changer init()
+    {
+        return new Changer()
+        {
+            @Override
+            public void setTileType(TileType tileType, int x, int y)
+            {
+                ModelCore.setTileType(tileType, x, y);
+            }
+
+            @Override
+            public void add(ObjectType objectType, int x, int y)
+            {
+                ModelCore.addObjectOnTile(objectType, x, y);
+            }
+        };
     }
 }
