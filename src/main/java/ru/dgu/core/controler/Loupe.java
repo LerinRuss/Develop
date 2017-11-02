@@ -1,4 +1,4 @@
-package ru.dgu.view.gui;
+package ru.dgu.core.controler;
 
 import ru.dgu.core.controler.mouse.Scalable;
 import ru.dgu.core.controler.mouse.Scrollable;

@@ -2,36 +2,36 @@ package ru.dgu.controler;
 
 import ru.dgu.core.exceptions.CallMethodException;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-class KeyControl extends KeyAdapter{
+class KeyControl implements KeyListener{
     private static boolean created = false;
-    private KeyAdapter keyAdapter;
+    private KeyListener keyListener;
 
-    KeyControl(final KeyAdapter keyAdapter){
+    KeyControl(final KeyListener keyListener){
         if(created)
             throw new CallMethodException("KeyControl is already exist");
-        setKeyAdapter(keyAdapter);
+        setKeyListener(keyListener);
         created = true;
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-        keyAdapter.keyTyped(e);
+        keyListener.keyTyped(e);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keyAdapter.keyPressed(e);
+        keyListener.keyPressed(e);
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        keyAdapter.keyReleased(e);
+        keyListener.keyReleased(e);
     }
 
-    void setKeyAdapter(KeyAdapter keyAdapter) {
-        this.keyAdapter = keyAdapter;
+    void setKeyListener(KeyListener keyListener) {
+        this.keyListener = keyListener;
     }
 }

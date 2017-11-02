@@ -1,34 +1,27 @@
 package ru.dgu.controler;
 
-import java.awt.event.KeyAdapter;
-import java.awt.event.MouseAdapter;
+import java.awt.event.*;
 
 public enum State {
-    WALKING(EmptyKeyControl.KEY_CONTROL,
-            EmptyMouseControl.MOUSE_CONTROL),
-
-    ADDITION(EmptyKeyControl.KEY_CONTROL,
-            EmptyMouseControl.MOUSE_CONTROL);
+    WALKING, ADDITION;
 
     private MouseAdapter mouseAdapter;
-    private KeyAdapter keyAdapter;
+    private KeyListener keyListener;
 
-    State(final KeyAdapter keyAdapter,
-          final MouseAdapter mouseAdapter){
-        setKeyAdapter(keyAdapter);
-        setMouseAdapter(mouseAdapter);
+    State(){
+        setKeyListener(EmptyKeyControl.KEY_CONTROL);
+        setMouseAdapter(EmptyMouseControl.MOUSE_CONTROL);
     }
 
-    public void setKeyAdapter(final KeyAdapter keyAdapter){
-        this.keyAdapter = keyAdapter;
+    public void setKeyListener(final KeyListener keyListener){
+        this.keyListener = keyListener;
     }
-
     public void setMouseAdapter(final MouseAdapter mouseAdapter){
         this.mouseAdapter = mouseAdapter;
     }
 
-    KeyAdapter getKeyAdapter(){
-        return keyAdapter;
+    KeyListener getKeyListener(){
+        return keyListener;
     }
     MouseAdapter getMouseAdapter(){
         return mouseAdapter;

@@ -1,11 +1,12 @@
-package ru.dgu.view.gui;
+package ru.dgu.core.controler;
 
+import ru.dgu.core.controler.mouse.CursorMovable;
 import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 import java.awt.*;
 
-public class Accentuation {
+public class Accentuation implements CursorMovable{
     private int x, y;
     private final int size;
     private static boolean generated;

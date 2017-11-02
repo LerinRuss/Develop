@@ -4,11 +4,11 @@ import ru.dgu.controler.Dispatcher;
 import ru.dgu.core.controler.key.KeyAdditionControl;
 import ru.dgu.controler.workSpace.MouseControl;
 import ru.dgu.core.loaders.TileTextureLoader;
-import ru.dgu.core.settings.KeySetting;
+import ru.dgu.core.controler.KeySetting;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.modelcore.ModelCore;
-import ru.dgu.view.gui.Accentuation;
-import ru.dgu.view.gui.Loupe;
+import ru.dgu.core.controler.Accentuation;
+import ru.dgu.core.controler.Loupe;
 import ru.dgu.view.gui.MapLoupeDrawer;
 import ru.dgu.view.gui.Window;
 
@@ -50,7 +50,7 @@ public class Main {
     private static Window createWindow(final  int width, final int height, final Loupe loupe,
                                        final Accentuation accentuation, final int mapSize){
         final Window window = Window.Builder.generate(width, height);
-        final KeyAdditionControl keyAdditionControl = KeyAdditionControl.create(KeySetting.getKeysSetting());
+        final KeyAdditionControl keyAdditionControl = KeyAdditionControl.create(KeySetting.getTileTypeKeysSetting());
         final MouseControl mouseControl = Dispatcher.initMouseControl(loupe);
         window.addMouseWheelListener(mouseControl);
         window.addMouseListener(mouseControl);

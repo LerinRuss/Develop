@@ -16,11 +16,11 @@ public class Builder {
     private Builder() {
     }
 
-    public static Storage build(final Scalable scalable,
+    public static ControlsStorage build(final Scalable scalable,
                                 final CursorMovable cursorMovable,
                                 final Scrollable scrollable,
                                 final Switcher switcher,
-                                final Changer addition,
+                                final Changer changer,
                                 final Map<Integer, TileType> tileTypeMap,
                                 final Map<Integer, ObjectType> objectTypeMap) {
         if (built)
@@ -40,16 +40,16 @@ public class Builder {
                 mouseScaleControl,
                 mouseMoveControl,
                 switcher,
-                addition,
+                changer,
                 tileTypeMap,
                 objectTypeMap
         );
-        final Storage storage = new ControlsStorage(walkingControl, additionControl);
+        final ControlsStorage storage = new ControlsStorage(walkingControl, additionControl);
         built = true;
         return storage;
     }
 
-    private static class ControlsStorage implements Storage {
+    public static class ControlsStorage {
         private final MultiAdapter walkingControl, additionControl;
 
         private ControlsStorage(MultiAdapter walkingControl, MultiAdapter additionControl) {

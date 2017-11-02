@@ -1,5 +1,6 @@
 package ru.dgu.view.gui;
 
+import ru.dgu.core.controler.Loupe;
 import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.core.main.Main;
 
