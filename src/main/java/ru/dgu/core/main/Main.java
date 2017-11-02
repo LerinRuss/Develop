@@ -1,8 +1,9 @@
 package ru.dgu.core.main;
 
-import ru.dgu.controler.KeyControl;
-import ru.dgu.controler.MouseControl;
-import ru.dgu.controler.TileTextureLoader;
+import ru.dgu.controler.Dispatcher;
+import ru.dgu.core.controler.key.KeyAdditionControl;
+import ru.dgu.controler.workSpace.MouseControl;
+import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.core.settings.KeySetting;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.modelcore.ModelCore;
@@ -49,12 +50,12 @@ public class Main {
     private static Window createWindow(final  int width, final int height, final Loupe loupe,
                                        final Accentuation accentuation, final int mapSize){
         final Window window = Window.Builder.generate(width, height);
-        final MouseControl mouseControl = new MouseControl(loupe, accentuation, mapSize);
-        final KeyControl keyControl = new KeyControl(KeySetting.getKeysSetting());
+        final KeyAdditionControl keyAdditionControl = KeyAdditionControl.create(KeySetting.getKeysSetting());
+        final MouseControl mouseControl = Dispatcher.initMouseControl(loupe);
         window.addMouseWheelListener(mouseControl);
-        window.addMouseMotionListener(mouseControl);
         window.addMouseListener(mouseControl);
-        window.addKeyListener(keyControl);
+        window.addMouseMotionListener(mouseControl);
+        window.addKeyListener(keyAdditionControl);
         window.setUndecorated(true);
         return window;
     }

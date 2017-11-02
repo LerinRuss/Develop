@@ -1,99 +1,65 @@
 package ru.dgu.controler;
 
-import ru.dgu.core.main.Main;
-import ru.dgu.model.map.tiles.TileType;
-import ru.dgu.model.modelcore.ModelCore;
-import ru.dgu.utils.coordinates.Transfer;
-import ru.dgu.utils.coordinates.IntegerCoordinates;
-import ru.dgu.view.gui.Accentuation;
-import ru.dgu.view.gui.Loupe;
+import ru.dgu.core.exceptions.CallMethodException;
 
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
-/*
-    this control is added to component
- */
-public class MouseControl implements MouseMotionListener, MouseListener, MouseWheelListener {
-    private final Loupe loupe;
-    private final Accentuation accentuation;
-    private int oldX, oldY;
-    private final int mapSize;
-    public static TileType type;
+class MouseControl extends MouseAdapter{
+    private static boolean created = false;
+    private MouseAdapter mouseAdapter;
 
-    /*
-        loupe witch sees at component
-     */
-    public MouseControl(final Loupe loupe, final Accentuation accentuation, final int mapSize){
-        this.loupe = loupe;
-        this.accentuation = accentuation;
-        this.mapSize = mapSize;
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        final int dx = -e.getX() + oldX;
-        final int dy = -e.getY() + oldY;
-
-        loupe.addX(dx);
-        loupe.addY(dy);
-
-        oldX = e.getX();
-        oldY = e.getY();
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        final int x = loupe.getX() - loupe.getWidth()/2 + e.getX();
-        final int y = loupe.getY() - loupe.getHeight()/2 + e.getY();
-        IntegerCoordinates coordinates = Transfer.transferCoordinates(Main.TILE_SIZE, x,y);
-        if(coordinates.getX() < 0 || coordinates.getX() >= mapSize)
-            return;
-        if(coordinates.getY() < 0 || coordinates.getY() >= mapSize)
-            return;
-
-        accentuation.translate(coordinates);
+    MouseControl(final MouseAdapter mouseAdapter){
+        if(created)
+            throw new CallMethodException("MouseControl is already created");
+        setMouseAdapter(mouseAdapter);
+        created = true;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
+       mouseAdapter.mouseClicked(e);
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        oldX = e.getX();
-        oldY = e.getY();
-        if(type == null)
-            return;
-
-        final int x = loupe.getX() - loupe.getWidth()/2 + oldX;
-        final int y = loupe.getY() - loupe.getHeight()/2 + oldY;
-
-        IntegerCoordinates coordinates = Transfer.transferCoordinates(Main.TILE_SIZE, x,y);
-
-        if(ModelCore.outOfMapBound(coordinates))
-            return;
-
-        ModelCore.setTileType(type, coordinates.getX(), coordinates.getY());
+        mouseAdapter.mousePressed(e);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        mouseAdapter.mouseReleased(e);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-
+        mouseAdapter.mouseEntered(e);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-
+        mouseAdapter.mouseExited(e);
     }
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-//        final int x = loupe.getX() - loupe.getWidth()/2 + e.getX();
-//        final int y = loupe.getY() - loupe.getHeight()/2 + e.getY();
-//        loupe.resize(x,y,e.getWheelRotation() << 2);
+        mouseAdapter.mouseWheelMoved(e);
     }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        mouseAdapter.mouseDragged(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        mouseAdapter.mouseMoved(e);
+    }
+
+    void setMouseAdapter(MouseAdapter mouseAdapter) {
+        this.mouseAdapter = mouseAdapter;
+    }
+
 }
+

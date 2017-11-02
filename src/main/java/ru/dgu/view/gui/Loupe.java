@@ -1,8 +1,10 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.controler.CallMethodException;
+import ru.dgu.core.controler.mouse.Scalable;
+import ru.dgu.core.controler.mouse.Scrollable;
+import ru.dgu.core.exceptions.CallMethodException;
 
-public class Loupe {
+public class Loupe implements Scrollable, Scalable {
     private int width, height;
     private int x, y;
     private static boolean generated;
@@ -21,11 +23,14 @@ public class Loupe {
         return loupe;
     }
 
-    public void resize(final int x, final int y, final int delta){
-        setX(x);
-        setY(y);
+    public void resize(final int delta){
         setWidth(getWidth() + delta + delta);
         setHeight(getHeight() + delta + delta);
+    }
+
+    public void move(final int dx, final int dy){
+        addX(dx);
+        addY(dy);
     }
 
     public void addX(final int dx){

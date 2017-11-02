@@ -1,5 +1,6 @@
-package ru.dgu.controler;
+package ru.dgu.core.loaders;
 
+import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.model.map.tiles.TileType;
 
 import javax.imageio.ImageIO;

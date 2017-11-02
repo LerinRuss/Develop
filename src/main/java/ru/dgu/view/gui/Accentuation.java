@@ -1,6 +1,6 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.controler.CallMethodException;
+import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 import java.awt.*;
