@@ -18,6 +18,7 @@ public class KeySetting {
     private static final Map<Integer, ObjectType> objectTypeKeys = new HashMap<>();
     static {
         objectTypeKeys.put(KeyEvent.VK_1, ObjectType.IMPERIAL_GUARD);
+        objectTypeKeys.put(KeyEvent.VK_2, ObjectType.TREE);
     }
     private KeySetting(){}
     public static Map<Integer, TileType> getTileTypeKeysSetting(){
