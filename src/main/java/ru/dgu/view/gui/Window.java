@@ -1,8 +1,8 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.core.controler.Loupe;
+import ru.dgu.core.controller.Loupe;
 import ru.dgu.core.exceptions.CallMethodException;
-import ru.dgu.core.main.Main;
+import ru.dgu.core.Main;
 
 import javax.swing.*;
 import java.awt.*;

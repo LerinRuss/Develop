@@ -8,7 +8,7 @@ import ru.dgu.model.types.ObjectType;
 
 import static junit.framework.TestCase.*;
 
-public class ModelCoreTest
+public class ModelControlerTest
 {
     @BeforeClass
     public static void beforeClass()

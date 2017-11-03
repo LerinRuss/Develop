@@ -2,7 +2,7 @@ package ru.dgu.model.modelcore;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import ru.dgu.core.controler.Changer;
+import ru.dgu.controller.Changer;
 import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.exceptions.ModelException;

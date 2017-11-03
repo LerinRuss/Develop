@@ -1,7 +1,7 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.core.controler.Accentuation;
-import ru.dgu.core.controler.Loupe;
+import ru.dgu.core.controller.Accentuation;
+import ru.dgu.core.controller.Loupe;
 import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.utils.coordinates.IntegerCoordinates;

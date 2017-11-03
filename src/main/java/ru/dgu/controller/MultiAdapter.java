@@ -1,8 +1,8 @@
-package ru.dgu.controler;
+package ru.dgu.controller;
 
 import java.awt.event.*;
 
-public class MultiAdapter extends MouseAdapter implements KeyListener {
+public abstract class MultiAdapter extends MouseAdapter implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {

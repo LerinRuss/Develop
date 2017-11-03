@@ -1,8 +1,8 @@
-package ru.dgu.controler;
+package ru.dgu.controller;
 
 import org.junit.Test;
 import ru.dgu.core.loaders.TileTextureLoader;
-import ru.dgu.core.main.Main;
+import ru.dgu.core.Main;
 import ru.dgu.model.map.tiles.TileType;
 
 import static org.junit.Assert.assertNotNull;

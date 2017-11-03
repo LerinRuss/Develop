@@ -1,4 +1,4 @@
-package ru.dgu.core.controler;
+package ru.dgu.controller.handler.switcher.changing;
 
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.types.ObjectType;
@@ -18,7 +18,6 @@ public class KeySetting {
     private static final Map<Integer, ObjectType> objectTypeKeys = new HashMap<>();
     static {
         objectTypeKeys.put(KeyEvent.VK_1, ObjectType.IMPERIAL_GUARD);
-        objectTypeKeys.put(KeyEvent.VK_2,ObjectType.IMPERIAL_GUARD);
     }
     private KeySetting(){}
     public static Map<Integer, TileType> getTileTypeKeysSetting(){

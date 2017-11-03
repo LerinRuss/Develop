@@ -1,4 +1,4 @@
-package ru.dgu.core.controler;
+package ru.dgu.controller;
 
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.types.ObjectType;
