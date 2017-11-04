@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public enum TileType
 {
-    GRASS, SAND, WATER, EMPTY;
+    GRASS, DIRTY, SAND, WATER, SHALLOW, BEACH_SAND ,EMPTY;
     private BufferedImage texture;
 
     public void setTexture(BufferedImage texture){

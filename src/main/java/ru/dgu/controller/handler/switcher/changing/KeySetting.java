@@ -11,9 +11,12 @@ public class KeySetting {
     private static final Map<Integer, TileType> tileTypeKeys = new HashMap<>();
     static {
         tileTypeKeys.put(KeyEvent.VK_1,TileType.GRASS);
-        tileTypeKeys.put(KeyEvent.VK_2,TileType.WATER);
-        tileTypeKeys.put(KeyEvent.VK_3,TileType.SAND);
-        tileTypeKeys.put(KeyEvent.VK_4,TileType.EMPTY);
+        tileTypeKeys.put(KeyEvent.VK_2,TileType.DIRTY);
+        tileTypeKeys.put(KeyEvent.VK_3,TileType.WATER);
+        tileTypeKeys.put(KeyEvent.VK_4,TileType.SHALLOW);
+        tileTypeKeys.put(KeyEvent.VK_5,TileType.SAND);
+        tileTypeKeys.put(KeyEvent.VK_6,TileType.BEACH_SAND);
+        tileTypeKeys.put(KeyEvent.VK_7,TileType.EMPTY);
     }
     private static final Map<Integer, ObjectType> objectTypeKeys = new HashMap<>();
     static {
@@ -21,8 +24,8 @@ public class KeySetting {
         objectTypeKeys.put(KeyEvent.VK_2, ObjectType.TREE);
     }
     private KeySetting(){}
-    public static Map<Integer, TileType> getTileTypeKeysSetting(){
+    static Map<Integer, TileType> getTileTypeKeysSetting(){
         return tileTypeKeys;
     }
-    public static Map<Integer, ObjectType> getObjectTypeKeys(){ return  objectTypeKeys;}
+    static Map<Integer, ObjectType> getObjectTypeKeys(){ return  objectTypeKeys;}
 }

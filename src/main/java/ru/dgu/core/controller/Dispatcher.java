@@ -4,6 +4,7 @@ import ru.dgu.controller.Changer;
 import ru.dgu.controller.Controller;
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.model.map.tiles.TileType;
+import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.model.types.ObjectType;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 import ru.dgu.utils.coordinates.Transfer;
@@ -38,6 +39,8 @@ public class Dispatcher {
         public void setTileType(TileType tileType, int x, int y) {
             final IntegerCoordinates loupeTransfer = Transfer.transferLoupeCoordinates(loupe, x ,y);
             final IntegerCoordinates mapTransfer = Transfer.transferCoordinates(tileSize, loupeTransfer.getX(), loupeTransfer.getY());
+            if(ModelCore.outOfMapBound(mapTransfer))
+                return;
             changer.setTileType(tileType, mapTransfer.getX(), mapTransfer.getY());
         }
 
@@ -45,6 +48,8 @@ public class Dispatcher {
         public void add(ObjectType objectType, int x, int y) {
             final IntegerCoordinates loupeTransfer = Transfer.transferLoupeCoordinates(loupe, x ,y);
             final IntegerCoordinates mapTransfer = Transfer.transferCoordinates(tileSize, loupeTransfer.getX(), loupeTransfer.getY());
+            if(ModelCore.outOfMapBound(mapTransfer))
+                return;
             changer.add(objectType, mapTransfer.getX(), mapTransfer.getY());
         }
     }
