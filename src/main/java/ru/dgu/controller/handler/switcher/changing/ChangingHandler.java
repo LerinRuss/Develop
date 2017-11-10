@@ -8,6 +8,7 @@ import ru.dgu.model.types.ObjectType;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
 public class ChangingHandler extends MultiAdapter{
     private static Changer changer;
@@ -43,8 +44,18 @@ public class ChangingHandler extends MultiAdapter{
     }
 
     @Override
+    public void keyTyped(KeyEvent e) {
+        current.keyTyped(e);
+    }
+
+    @Override
     public void mousePressed(MouseEvent e) {
         current.mousePressed(e);
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        current.mouseReleased(e);
     }
 
     @Override
@@ -56,6 +67,26 @@ public class ChangingHandler extends MultiAdapter{
     public void mouseClicked(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON3)
             Switcher.setCurrent(Switcher.getWalkingHandler());
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        current.mouseEntered(e);
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        current.mouseExited(e);
+    }
+
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        current.mouseWheelMoved(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        current.mouseMoved(e);
     }
 
     @Override

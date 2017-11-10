@@ -22,15 +22,12 @@ public class TileTypeAdditionHandler extends MultiAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1)
-            setTileType(type, e.getX(), e.getY());
+        setTileType(type, e.getX(), e.getY());
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if(e.getButton() == MouseEvent.NOBUTTON){
-            setTileType(type, e.getX(), e.getY());
-        }
+        setTileType(type, e.getX(), e.getY());
     }
 
     @Override

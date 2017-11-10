@@ -13,6 +13,7 @@ public class Switcher extends MultiAdapter{
     private static MultiAdapter walkingHandler;
     private static MultiAdapter additionHandler;
     private static MultiAdapter current;
+    private boolean dragged;
 
     public Switcher(final Loupe loupe,
                     final Changer changer) {
@@ -43,12 +44,18 @@ public class Switcher extends MultiAdapter{
 
     @Override
     public void mousePressed(MouseEvent e) {
+        if(e.getButton() != MouseEvent.BUTTON1)
+            return;
         current.mousePressed(e);
+        dragged = true;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
+        if(e.getButton() != MouseEvent.BUTTON1)
+            return;
         current.mouseReleased(e);
+        dragged = false;
     }
 
     @Override
@@ -68,6 +75,8 @@ public class Switcher extends MultiAdapter{
 
     @Override
     public void mouseDragged(MouseEvent e) {
+        if(!dragged)
+            return;
         current.mouseDragged(e);
     }
 

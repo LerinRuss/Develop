@@ -32,15 +32,12 @@ class ObjectTypeChangingHandler extends MultiAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
-        if(e.getButton() == MouseEvent.BUTTON1)
-            add(type, e.getX(), e.getY());
+        add(type, e.getX(), e.getY());
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        if(e.getButton() == MouseEvent.NOBUTTON)
-            add(type, e.getX(), e.getY());
+        add(type, e.getX(), e.getY());
     }
 
     @Override
