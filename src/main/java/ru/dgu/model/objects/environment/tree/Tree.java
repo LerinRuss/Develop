@@ -14,7 +14,7 @@ public class Tree extends EnvironmentObject implements Action
     public Tree()
     {
         this.growthPoint = 0;
-        this.state = new SproutState();
+        this.state = SproutState.get();
     }
 
     public void increaceGrowthPoint(int count)

@@ -5,7 +5,12 @@ import ru.dgu.model.objects.environment.tree.Tree;
 
 public class TreeState extends TreesState
 {
-    public TreeState(){}
+    private TreeState(){}
+    private static TreeState treeState = new TreeState();
+    public static TreeState get(){
+        return treeState;
+    }
+
     @Override
     public TreeStateEnum getState()
     {
@@ -17,7 +22,7 @@ public class TreeState extends TreesState
     {
         tree.increaceGrowthPoint(Constants.GROW_POINT_PER_STEP);
         if(tree.getGrowthPoint() >= TreesState.DEAD_TREE_POINT){
-            tree.setState(new DeadTreeState());
+            tree.setState(DeadTreeState.get());
         }
     }
 }

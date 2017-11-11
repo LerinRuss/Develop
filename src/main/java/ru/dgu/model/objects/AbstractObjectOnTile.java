@@ -10,4 +10,10 @@ public abstract class AbstractObjectOnTile
     {
         this.type = type;
     }
+
+    public ObjectType getType()
+    {
+        return type;
+    }
+
 }

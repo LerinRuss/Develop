@@ -16,7 +16,7 @@ public class EnvironmentObjectTest
     public void treeTest()
     {
         Tree tree = new Tree();
-        assertEquals(new SproutState().getState(), tree.getState());
+        assertEquals(SproutState.get().getState(), tree.getState());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class EnvironmentObjectTest
         for (int i = 0; i < TreeState.SHRUB_POINT / Constants.GROW_POINT_PER_STEP; i++) {
             tree.grow();
         }
-        assertEquals(new ShrubState().getState(), tree.getState());
+        assertEquals(ShrubState.get().getState(), tree.getState());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class EnvironmentObjectTest
         for (int i = 0; i < TreeState.TREE_POINT / Constants.GROW_POINT_PER_STEP; i++) {
             tree.grow();
         }
-        assertEquals(new TreeState().getState(), tree.getState());
+        assertEquals(TreeState.get().getState(), tree.getState());
     }
     @Test
     public void treeGrowDeadTreeStateTest()
@@ -45,7 +45,7 @@ public class EnvironmentObjectTest
         for (int i = 0; i < TreeState.DEAD_TREE_POINT / Constants.GROW_POINT_PER_STEP; i++) {
             tree.grow();
         }
-        assertEquals(new DeadTreeState().getState(), tree.getState());
+        assertEquals(DeadTreeState.get().getState(), tree.getState());
     }
 
 }
