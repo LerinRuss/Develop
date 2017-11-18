@@ -19,7 +19,7 @@ public class ShrubState extends TreesState
     @Override
     public void grow(Tree tree)
     {
-        tree.increaceGrowthPoint(Constants.GROW_POINT_PER_STEP);
+        tree.increaseGrowthPoint(Constants.GROW_POINT_PER_STEP);
         if(tree.getGrowthPoint() >= TreesState.TREE_POINT){
             tree.setState(TreeState.get());
         }

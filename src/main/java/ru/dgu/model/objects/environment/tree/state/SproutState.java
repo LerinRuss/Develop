@@ -22,7 +22,7 @@ public class SproutState extends TreesState
 
     public static void rise(Tree tree)
     {
-        tree.increaceGrowthPoint(Constants.GROW_POINT_PER_STEP);
+        tree.increaseGrowthPoint(Constants.GROW_POINT_PER_STEP);
         if(tree.getGrowthPoint() >= TreesState.SHRUB_POINT){
             tree.setState(ShrubState.get());
         }
