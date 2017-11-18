@@ -33,7 +33,7 @@ public class ModelCore
      * Return side length of square map
      *
      * @return current map size
-     */
+    */
     public static int getCurrentMapSize()
     {
         return currentMap.getSize();
@@ -43,7 +43,7 @@ public class ModelCore
      * @param x - X coordinate of tile
      * @param y - Y coordinate of tile
      * @return type of tile by coordinate x, y.
-     */
+    */
     public static TileType getTileType(int x, int y)
     {
         return currentMap.getTileType(x, y);
@@ -53,7 +53,7 @@ public class ModelCore
      * Now create default map. Later add possibility to tune creating map.
      *
      * @param size - size of creating map.
-     */
+    */
     public static void createMap(int size)
     {
         currentMap = MapOperations.createMap(size);
@@ -62,7 +62,7 @@ public class ModelCore
     /**
      * @param coordinates
      * @return <tt>true</tt> if and only if coordinates is not belong current map
-     */
+    */
     public static boolean outOfMapBound(IntegerCoordinates coordinates)
     {
         return outOfMapBound(coordinates.getX(), coordinates.getY());
@@ -72,7 +72,7 @@ public class ModelCore
      * @param x - x coordinate
      * @param y - y coordinate
      * @return true if and only if coordinate is bot nelong current map
-     */
+    */
     public static boolean outOfMapBound(int x, int y)
     {
         return x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize();
@@ -82,7 +82,7 @@ public class ModelCore
      * @param x - x coordinate
      * @param y - y coordinate
      * @throws MapException if and only if coordinate is not belong current map
-     */
+    */
     private static void checkCoordinate(int x, int y) throws MapException
     {
         if (x < 0 || x > currentMap.getSize() || y < 0 || y > currentMap.getSize()) {
@@ -98,7 +98,7 @@ public class ModelCore
      * @param x        - x coordinate of tile
      * @param y        - y coordinate of tile
      * @throws MapException if and only if coordinate is not belong current map
-     */
+    */
     public static void setTileType(TileType tileType, int x, int y) throws MapException
     {
         checkCoordinate(x, y);
@@ -110,7 +110,7 @@ public class ModelCore
      * @param y - y coordinate of tile
      * @return object on given coordinate
      * @throws MapException if and only if coordinate is bot belong current map
-     */
+    */
     public static AbstractObjectOnTile getObjectOnTile(int x, int y) throws MapException
     {
         checkCoordinate(x, y);
@@ -124,7 +124,7 @@ public class ModelCore
      * @param x    - x coordinate of tile
      * @param y    - y coordinate of tile
      * @throws ModelException if and only if coordinate is bot belong current map
-     */
+    */
     public static void addObjectOnTile(ObjectType type, int x, int y) throws ModelException
     {
         checkCoordinate(x, y);
@@ -135,7 +135,7 @@ public class ModelCore
      * Delete given object from map.
      *
      * @param object - onject for deleting
-     */
+    */
     public static void deleteObject(AbstractObjectOnTile object)
     {
         objectTileBidiMap.removeValue(object);
@@ -146,7 +146,7 @@ public class ModelCore
      *
      * @param x
      * @param y
-     */
+    */
     public static void deleteObject(int x, int y) throws MapException
     {
         checkCoordinate(x, y);
@@ -157,7 +157,7 @@ public class ModelCore
      * Delete object on given tile
      *
      * @param tile - tile
-     */
+    */
     public static void deleteObject(Tile tile)
     {
         objectTileBidiMap.remove(tile);
@@ -165,7 +165,7 @@ public class ModelCore
 
     /**
      * Call this method to make the model one step
-     */
+    */
     public static void doStep()
     {
         for (Action item : actionList) {
