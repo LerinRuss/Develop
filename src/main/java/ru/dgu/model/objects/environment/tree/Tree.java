@@ -17,6 +17,7 @@ public class Tree extends EnvironmentObject implements Action
     {
         this.growthPoint = 0;
         this.state = SproutState.get();
+        this.state.setTexture(TreeLoad.TreeTexturesStorage.getBufferedImage(this.state));
     }
 
     public void increaseGrowthPoint(int count)

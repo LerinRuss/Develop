@@ -55,6 +55,8 @@ public class MapLoupeDrawer extends BufferedImage{
             for(int y = yStart; y <= yEnd; y++){
                 final BufferedImage texture = TileTextureLoader.getTexture(ModelCore.getTileType(x,y));
                 g.drawImage(texture, x * tileSize, y * tileSize, tileSize, tileSize, null);
+                //final AbstractObjectOnTile object = ModelCore.getObjectOnTile(x,y);
+                //object.
             }
         }
         accentuation.paint(g);
