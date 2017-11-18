@@ -1,6 +1,6 @@
 package ru.dgu.model.texture_storage;
 
-import ru.dgu.model.objects.environment.tree.Tree;
+import ru.dgu.model.objects.environment.tree.state.TreeStateEnum;
 
 import java.awt.image.BufferedImage;
 
@@ -18,9 +18,11 @@ public class TreeTexturesStorage
         TreeTexturesStorage.bufferedImages[i] = bufferedImage;
     }
 
-    public static void setTexture(Tree tree)
+    public static void setTexture()
     {
-        tree.setTexture(bufferedImages[tree.getState().ordinal()]);
+        for(TreeStateEnum item : TreeStateEnum.values()){
+            item.getState().setTexture(bufferedImages[item.ordinal()]);
+        }
     }
 
 }
