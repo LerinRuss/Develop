@@ -1,7 +1,8 @@
 package ru.dgu.model.objects.units.imperium;
 
 import ru.dgu.model.objects.units.Unit;
-import ru.dgu.model.types.ObjectType;
+
+import java.awt.image.BufferedImage;
 
 public class ImperialGuard extends Unit
 {
@@ -19,6 +20,7 @@ public class ImperialGuard extends Unit
     private static final int maxMorale = 100;
     private static final int maxDefence = 100;
     public boolean wasNearBattle;
+    private BufferedImage texture;
     //Название - Отряд Имперских Гвардейцев
     //Количество здоровья - 100
     //Боевой дух - 100
@@ -29,7 +31,6 @@ public class ImperialGuard extends Unit
     //Скорость - 1
     //Максимальное количество - 9
     public ImperialGuard(){
-        setType(ObjectType.IMPERIAL_GUARD);
         setHealthPoint(ALL_HEALTH_POINT);
         currentNumberOfWarrior = MAX_NUMBER_OF_WARRIOR;
         setMorale(maxMorale);
@@ -66,5 +67,17 @@ public class ImperialGuard extends Unit
         result = 31 * result + currentNumberOfWarrior;
         result = 31 * result + (wasNearBattle ? 1 : 0);
         return result;
+    }
+
+    @Override
+    public BufferedImage getTexture()
+    {
+        return texture;
+    }
+
+    @Override
+    public void setTexture(BufferedImage texture)
+    {
+        this.texture = texture;
     }
 }

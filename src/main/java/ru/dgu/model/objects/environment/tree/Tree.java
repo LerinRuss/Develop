@@ -4,6 +4,7 @@ import ru.dgu.model.objects.environment.EnvironmentObject;
 import ru.dgu.model.objects.environment.tree.state.SproutState;
 import ru.dgu.model.objects.environment.tree.state.TreeStateEnum;
 import ru.dgu.model.objects.environment.tree.state.TreesState;
+import ru.dgu.model.texture_storage.TreeTexturesStorage;
 import ru.dgu.model.utils.action.Action;
 
 import java.awt.image.BufferedImage;
@@ -16,7 +17,8 @@ public class Tree extends EnvironmentObject implements Action
     public Tree()
     {
         this.growthPoint = 0;
-        this.state = SproutState.get();
+        setState(SproutState.get());
+        setTexture(TreeTexturesStorage.getTexture(getState()));
     }
 
     public void increaseGrowthPoint(int count)
@@ -56,6 +58,7 @@ public class Tree extends EnvironmentObject implements Action
     public void action()
     {
         grow();
+        setTexture(TreeTexturesStorage.getTexture(getState()));
     }
 
     @Override
