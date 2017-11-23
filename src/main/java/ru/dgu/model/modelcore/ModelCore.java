@@ -16,7 +16,9 @@ import ru.dgu.model.utils.action.Action;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ModelCore
 {
@@ -189,5 +191,13 @@ public class ModelCore
                 ModelCore.addObjectOnTile(objectType, x, y);
             }
         };
+    }
+
+    public static Map<IntegerCoordinates, AbstractObjectOnTile> getAllObjects(){
+        Map<IntegerCoordinates, AbstractObjectOnTile> objectOnMap = new HashMap<>();
+        for(AbstractObjectOnTile item : objectTileBidiMap.values()){
+            objectOnMap.put(objectTileBidiMap.getKey(item).getCoordinates(), item);
+        }
+        return objectOnMap;
     }
 }

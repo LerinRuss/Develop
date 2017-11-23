@@ -1,9 +1,10 @@
 package ru.dgu.model.map.tiles;
 
+import ru.dgu.utils.coordinates.IntegerCoordinates;
+
 public abstract class Tile
 {
     private TileType type;
-
 
     public Tile(TileType type)
     {
@@ -19,4 +20,6 @@ public abstract class Tile
     {
         this.type = type;
     }
+
+    public abstract IntegerCoordinates getCoordinates();
 }

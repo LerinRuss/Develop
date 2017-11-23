@@ -17,7 +17,7 @@ public class MapByEnumArray extends AbstractMap
         map = new Tile[size][size];
         for (int x = 0; x < map.length; x++) {
             for (int y = 0; y < map[0].length; y++) {
-                setTile(new ConcreteTile(TileType.GRASS), x, y);
+                setTile(new ConcreteTile(TileType.GRASS, x, y), x, y);
             }
         }
 
