@@ -1,9 +1,9 @@
 package ru.dgu.core;
 
 import ru.dgu.controller.MultiAdapter;
-import ru.dgu.core.controller.Accentuation;
+import ru.dgu.layer.Accentuation;
 import ru.dgu.core.controller.Dispatcher;
-import ru.dgu.core.controller.Loupe;
+import ru.dgu.layer.Loupe;
 import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.modelcore.ModelCore;
@@ -46,7 +46,7 @@ public class Main {
     }
 
     private static Window createWindow(final  int width, final int height, final Loupe loupe, final Accentuation accentuation){
-        final Window window = Window.Builder.generate(width, height);
+        final Window window = Window.Builder.generate(loupe, width, height);
 
         final MultiAdapter multiAdapter = Dispatcher.create(ModelCore.init(), loupe, accentuation, TILE_SIZE);
 

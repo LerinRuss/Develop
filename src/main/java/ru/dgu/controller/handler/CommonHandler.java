@@ -1,7 +1,6 @@
 package ru.dgu.controller.handler;
 
 import ru.dgu.controller.MultiAdapter;
-import ru.dgu.core.controller.Loupe;
 import ru.dgu.core.controller.Movable;
 
 import java.awt.event.MouseEvent;
@@ -9,11 +8,9 @@ import java.awt.event.MouseWheelEvent;
 
 public class CommonHandler extends MultiAdapter{
     private final Movable movable;
-    private final Loupe loupe;
 
-    public CommonHandler(Movable movable, Loupe loupe) {
+    public CommonHandler(Movable movable) {
         this.movable = movable;
-        this.loupe = loupe;
     }
 
     @Override

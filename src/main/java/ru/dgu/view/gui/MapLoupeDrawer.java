@@ -1,16 +1,19 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.core.controller.Accentuation;
-import ru.dgu.core.controller.Loupe;
+import ru.dgu.layer.Accentuation;
+import ru.dgu.layer.Loupe;
 import ru.dgu.core.loaders.TileTextureLoader;
 import ru.dgu.model.modelcore.ModelCore;
+import ru.dgu.model.objects.AbstractObjectOnTile;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 import ru.dgu.utils.coordinates.Transfer;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Map;
+import java.util.function.BiConsumer;
 
-public class MapLoupeDrawer extends BufferedImage{
+public class MapLoupeDrawer extends BufferedImage {
     private static MapLoupeDrawer mapLoupeDrawer;
 
     private final Loupe loupe;
@@ -50,18 +53,21 @@ public class MapLoupeDrawer extends BufferedImage{
         final int xEnd = Math.min(size - 1, endCoordinates.getX());
         final int yEnd = Math.min(size - 1, endCoordinates.getY());
 
-        Graphics g = getGraphics();
+        final Graphics g = getGraphics();
         for(int x = xStart; x <= xEnd; x++){
             for(int y = yStart; y <= yEnd; y++){
                 final BufferedImage texture = TileTextureLoader.getTexture(ModelCore.getTileType(x,y));
                 g.drawImage(texture, x * tileSize, y * tileSize, tileSize, tileSize, null);
             }
         }
-        accentuation.paint(g);
-    }
 
-    public Loupe getLoupe() {
-        return loupe;
+        Map<IntegerCoordinates,AbstractObjectOnTile> map = ModelCore.getAllObjects();
+
+        final BiConsumer<IntegerCoordinates, AbstractObjectOnTile> biConsumer = (coors, obj) ->
+                g.drawImage(obj.getTexture(), coors.getX(), coors.getY(), null);
+
+        map.forEach(biConsumer);
+        accentuation.paint(g);
     }
 
     public void setAccentuation(final Accentuation accentuation){

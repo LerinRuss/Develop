@@ -1,7 +1,7 @@
 package ru.dgu.controller.handler.switcher;
 
 import ru.dgu.controller.MultiAdapter;
-import ru.dgu.core.controller.Loupe;
+import ru.dgu.layer.Loupe;
 import ru.dgu.core.exceptions.CallMethodException;
 
 import java.awt.event.KeyEvent;

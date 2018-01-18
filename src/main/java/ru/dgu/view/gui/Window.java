@@ -1,21 +1,23 @@
 package ru.dgu.view.gui;
 
-import ru.dgu.core.controller.Loupe;
-import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.core.Main;
+import ru.dgu.layer.Loupe;
+import ru.dgu.core.exceptions.CallMethodException;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Window extends JFrame{
-    public Window() {
+    private final Loupe loupe;
+
+    public Window(Loupe loupe) {
         super("Engine");
+        this.loupe = loupe;
     }
-    public void repaint(final MapLoupeDrawer desk,final int size){
+
+    public void repaint(final MapLoupeDrawer desk,final int size) {
         //super.repaint();
         Graphics g = getGraphics();
-        final Loupe loupe = desk.getLoupe();
-
         final int luX = loupe.getX() - getWidth()/2;
         final int luY = loupe.getY() - getHeight()/2;
         final int rdX = loupe.getX() + loupe.getWidth()/2;
@@ -54,10 +56,10 @@ public class Window extends JFrame{
 
     public static class Builder{
         private static boolean generated;
-        public static Window generate(final int width, final int height){
+        public static Window generate(Loupe loupe, final int width, final int height){
             if(generated)
                 throw new CallMethodException("Window is already generated");
-            Window window = new Window();
+            Window window = new Window(loupe);
             window.setSize(width,height);
             window.setLocationRelativeTo(null);
             window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,4 +1,4 @@
-package ru.dgu.core.controller;
+package ru.dgu.layer;
 
 import ru.dgu.core.exceptions.CallMethodException;
 

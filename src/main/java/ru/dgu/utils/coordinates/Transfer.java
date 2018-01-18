@@ -1,6 +1,6 @@
 package ru.dgu.utils.coordinates;
 
-import ru.dgu.core.controller.Loupe;
+import ru.dgu.layer.Loupe;
 
 public class Transfer {
     private Transfer(){}

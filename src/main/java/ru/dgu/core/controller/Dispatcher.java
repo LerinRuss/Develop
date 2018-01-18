@@ -3,6 +3,8 @@ package ru.dgu.core.controller;
 import ru.dgu.controller.Changer;
 import ru.dgu.controller.Controller;
 import ru.dgu.controller.MultiAdapter;
+import ru.dgu.layer.Accentuation;
+import ru.dgu.layer.Loupe;
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.modelcore.ModelCore;
 import ru.dgu.model.types.ObjectType;

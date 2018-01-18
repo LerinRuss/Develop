@@ -1,5 +1,6 @@
-package ru.dgu.core.controller;
+package ru.dgu.layer;
 
+import ru.dgu.core.controller.Movable;
 import ru.dgu.core.exceptions.CallMethodException;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 

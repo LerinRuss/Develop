@@ -2,7 +2,7 @@ package ru.dgu.controller.handler.switcher;
 
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.controller.Changer;
-import ru.dgu.core.controller.Loupe;
+import ru.dgu.layer.Loupe;
 import ru.dgu.controller.handler.switcher.changing.ChangingHandler;
 
 import java.awt.event.KeyEvent;
