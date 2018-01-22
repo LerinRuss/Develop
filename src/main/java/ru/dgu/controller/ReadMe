@@ -1,0 +1,40 @@
+controller is package for mouse and key's control in the application.
+It's divided into abstraction and realization.
+
+Files within this package are abstraction of control.
+Core package contains realization of control.
+
+I will call files of control abstraction as abstraction of control.
+And as same way I will call files of control realization as realization of control.
+
+About abstraction of control all is simple. I's just files which are used by realization.
+Realization of control has a difficult structure like a tree in the Graphs.
+Every node of tree is MultiAdapter instance.
+Root of realization control is the Backbone. Core put child nodes in one and then
+returns backbone. Start point of Core is ControlerBuilder.
+
+About structure of packages in the core.
+As mentioned earlier, realization of control has difficult structure.
+So, the core packages has difficult hierarchy the same way.
+
+The control package contains nodes which can added in the Backbone.
+They may be called as start nodes of control tree. Every start node
+can have simple child node or hard child node or have no one.
+
+For example
+
+1)
+class A extend MultiAdapter {} - Start Node that doesn't have child node
+
+2)
+class B extend MultiAdapter implements Switcher {...} - This is Start Node that can have
+child nodes like class A or same way a Switcher.
+Switcher is a node of tree that can have several nodes but active node only one
+at same the time. During working of Application child nodes of Switcher
+switch each other within one parent witch setCurrent() method of Switcher.
+
+In the control package and subpackages there is ...Builder that build current tree node.
+Also ...Store is class that keeps child nodes which can switch each other within their parent.
+Also ...Control class is a start node or package. Package also is a tree node. if in the
+package there is class that name the same as subpackage that is representative of this
+subpackage.

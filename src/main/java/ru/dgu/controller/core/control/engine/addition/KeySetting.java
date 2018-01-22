@@ -1,4 +1,4 @@
-package ru.dgu.controller.handler.switcher.changing;
+package ru.dgu.controller.core.control.engine.addition;
 
 import ru.dgu.model.map.tiles.TileType;
 import ru.dgu.model.types.ObjectType;
@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class KeySetting {
+class KeySetting {
     private static final Map<Integer, TileType> tileTypeKeys = new HashMap<>();
     static {
         tileTypeKeys.put(KeyEvent.VK_1,TileType.GRASS);
@@ -23,7 +23,9 @@ public class KeySetting {
         objectTypeKeys.put(KeyEvent.VK_1, ObjectType.IMPERIAL_GUARD);
         objectTypeKeys.put(KeyEvent.VK_2, ObjectType.TREE);
     }
+
     private KeySetting(){}
+
     static Map<Integer, TileType> getTileTypeKeysSetting(){
         return tileTypeKeys;
     }

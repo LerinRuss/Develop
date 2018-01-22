@@ -3,86 +3,93 @@ package ru.dgu.controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.Arrays;
 
+/**
+ * This class is constant of an array of MultiAdapters.
+ * Every array element will be called in the order in which it is in the array.
+ */
 public class Backbone extends MultiAdapter {
 
-    private final MultiAdapter cervicalVertebra;
-    private final MultiAdapter vertebra;
+    private final MultiAdapter[] vertebrae;
 
-    public Backbone(final MultiAdapter vertebra,
-                    final MultiAdapter cervicalVertebra){
-        this.vertebra = vertebra;
-        this.cervicalVertebra = cervicalVertebra;
+    public Backbone(MultiAdapter... vertebrae) {
+        this.vertebrae = Arrays.copyOf(vertebrae, vertebrae.length);
     }
-
     @Override
     public void keyTyped(KeyEvent e) {
-        vertebra.keyTyped(e);
-        cervicalVertebra.keyTyped(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.keyTyped(e);
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        vertebra.keyPressed(e);
-        cervicalVertebra.keyPressed(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.keyPressed(e);
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        vertebra.keyReleased(e);
-        cervicalVertebra.keyReleased(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.keyReleased(e);
+        }
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        vertebra.mouseClicked(e);
-        cervicalVertebra.mouseClicked(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseClicked(e);
+        }
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        vertebra.mousePressed(e);
-        cervicalVertebra.mousePressed(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mousePressed(e);
+        }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        vertebra.mouseReleased(e);
-        cervicalVertebra.mouseReleased(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseReleased(e);
+        }
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        vertebra.mouseEntered(e);
-        cervicalVertebra.mouseEntered(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseEntered(e);
+        }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        vertebra.mouseExited(e);
-        cervicalVertebra.mouseExited(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseExited(e);
+        }
     }
 
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        vertebra.mouseWheelMoved(e);
-        cervicalVertebra.mouseWheelMoved(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseWheelMoved(e);
+        }
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        vertebra.mouseDragged(e);
-        cervicalVertebra.mouseDragged(e);
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseDragged(e);
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent e) {
-        vertebra.mouseMoved(e);
-        cervicalVertebra.mouseMoved(e);
-    }
-
-    @Override
-    public String toString() {
-        return cervicalVertebra.toString();
+        for (MultiAdapter vertebra : vertebrae) {
+            vertebra.mouseMoved(e);
+        }
     }
 }

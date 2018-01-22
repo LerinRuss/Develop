@@ -1,32 +1,31 @@
-package ru.dgu.controller.handler.switcher;
+package ru.dgu.controller.core.control.engine;
 
 import ru.dgu.controller.MultiAdapter;
-import ru.dgu.controller.Changer;
-import ru.dgu.layer.Loupe;
-import ru.dgu.controller.handler.switcher.changing.ChangingHandler;
+import ru.dgu.controller.Switcher;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-
-public class Switcher extends MultiAdapter{
-    private static MultiAdapter walkingHandler;
-    private static MultiAdapter additionHandler;
-    private static MultiAdapter current;
+/**
+ * This class is realisation control of two states:
+ * walking and addition. what is more only one of two can be called at the same time.
+ *
+ * One more, in order to indicate what state is
+ *
+ * Dragging can be used only after press LKM button.
+ */
+class EngineControl extends MultiAdapter implements Switcher{
+    private MultiAdapter current;
     private boolean dragged;
 
-    public Switcher(final Loupe loupe,
-                    final Changer changer) {
-        walkingHandler = new WalkingHandler(loupe);
-        additionHandler = new ChangingHandler(changer);
-        setCurrent(walkingHandler);
+    EngineControl() {
     }
 
+    //base control block
     @Override
     public void keyTyped(KeyEvent e) {
         current.keyTyped(e);
     }
-
     @Override
     public void keyPressed(KeyEvent e) {
         current.keyPressed(e);
@@ -84,22 +83,12 @@ public class Switcher extends MultiAdapter{
     public void mouseMoved(MouseEvent e) {
         current.mouseMoved(e);
     }
+    //end control block
 
-    @Override
-    public String toString() {
-        return current.toString();
-    }
+    public void setCurrent(MultiAdapter current) {
+        assert this.current != null;
 
-    public static MultiAdapter getWalkingHandler() {
-        return walkingHandler;
-    }
-
-    public static MultiAdapter getAdditionHandler() {
-        return additionHandler;
-    }
-
-    public static void setCurrent(MultiAdapter current) {
-        Switcher.current = current;
+        this.current = current;
     }
 
 }
