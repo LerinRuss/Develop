@@ -16,7 +16,7 @@ import java.awt.event.MouseWheelEvent;
 public class CommonControl extends MultiAdapter{
     private final Movable movable;
 
-    public CommonControl(Movable movable) {
+    CommonControl(Movable movable) {
         this.movable = movable;
     }
 

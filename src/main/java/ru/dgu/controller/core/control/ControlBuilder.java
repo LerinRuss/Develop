@@ -16,7 +16,6 @@ public class ControlBuilder {
                                       final Changer changer){
         final MultiAdapter commonHandler = new CommonControl(movable);
         final MultiAdapter switcher = EngineBuilder.build(loupe, changer);
-        final MultiAdapter backbone = new Backbone(commonHandler, switcher);
-        return backbone;
+        return new Backbone(commonHandler, switcher);
     }
 }

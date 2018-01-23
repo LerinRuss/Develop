@@ -1,7 +1,7 @@
 package ru.dgu.core.controller;
 
 import ru.dgu.controller.Changer;
-import ru.dgu.controller.Controller;
+import ru.dgu.controller.core.control.ControlBuilder;
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.layer.Accentuation;
 import ru.dgu.layer.Loupe;
@@ -21,7 +21,7 @@ public class Dispatcher {
                                       final int tileSize){
         final AccentuationProxy accentuationProxy = new AccentuationProxy(accentuation, loupe, tileSize);
         final ChangerProxy changerProxy = new ChangerProxy(changer,loupe, tileSize);
-        return  Controller.create(accentuationProxy, loupe, changerProxy);
+        return  ControlBuilder.create(accentuationProxy, loupe, changerProxy);
     }
 
     private static class ChangerProxy implements Changer {

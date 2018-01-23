@@ -3,29 +3,34 @@ package ru.dgu.controller.core.control.engine.addition;
 import ru.dgu.controller.Changer;
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.controller.Switcher;
+import ru.dgu.controller.TileAdditionKeysSetting;
 import ru.dgu.model.map.tiles.TileType;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.util.Map;
 
-class TileTypeAdditionHandler extends MultiAdapter {
+class TileAdditionHandler extends MultiAdapter {
 
-    private final Map<Integer, TileType> tileTypesMap;//?
+    private final TileAdditionKeysSetting tileKeysSetting;
     private final Changer changer;
     private final Switcher switcher;
-    private TileType type;//?
+    private TileType type;
 
-    TileTypeAdditionHandler(Switcher switcher, Changer changer) {
-        if(KeySetting.getTileTypeKeysSetting().isEmpty())
+    TileAdditionHandler(Switcher switcher,
+                        Changer changer,
+                        TileAdditionKeysSetting tileKeysSetting) {
+
+        if(tileKeysSetting.isEmpty())
             throw new IllegalArgumentException("Key codes for tile types are empty");
+
         this.switcher = switcher;
         this.changer = changer;
-        this.tileTypesMap = KeySetting.getTileTypeKeysSetting();
-        type = tileTypesMap.values().iterator().next();//?
+        this.tileKeysSetting = tileKeysSetting;
+
+        setType(tileKeysSetting.getTileKeysSetting().values().iterator().next());
+
     }
-
-
+    //start control block
     @Override
     public void mousePressed(MouseEvent e) {
         changer.setTileType(type, e.getX(), e.getY());
@@ -38,14 +43,15 @@ class TileTypeAdditionHandler extends MultiAdapter {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        final TileType type = tileTypesMap.get(e.getKeyCode());
+        final TileType type = tileKeysSetting.get(e.getKeyCode());
         setType(type);
     }
     @Override
     public void keyReleased(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_TAB)
+        if(tileKeysSetting.hasSwitched(e.getKeyCode()))
             switcher.setCurrent(AdditionStore.getObjectTypeChangingHandler());
     }
+    //end block
 
     @Override
     public String toString() {
