@@ -1,3 +1,6 @@
 This package has start nodes of the control tree.
 
-Any state transition is a released key
+Any state transition is a released key.
+
+...Control is a hard tree node
+...Header is a tree leaf

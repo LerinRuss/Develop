@@ -1,8 +1,7 @@
 package ru.dgu.core.controller;
 
-import ru.dgu.controller.Changer;
+import ru.dgu.controller.*;
 import ru.dgu.controller.core.control.ControlBuilder;
-import ru.dgu.controller.MultiAdapter;
 import ru.dgu.layer.Accentuation;
 import ru.dgu.layer.Loupe;
 import ru.dgu.model.map.tiles.TileType;
@@ -11,48 +10,117 @@ import ru.dgu.model.types.ObjectType;
 import ru.dgu.utils.coordinates.IntegerCoordinates;
 import ru.dgu.utils.coordinates.Transfer;
 
+import java.awt.event.KeyEvent;
+import java.util.Map;
+
 public class Dispatcher {
 
     private Dispatcher(){}
 
-    public static MultiAdapter create(final Changer changer,
-                                      final Loupe loupe,
-                                      final Accentuation accentuation,
-                                      final int tileSize){
+    public static MultiAdapter create
+            (MapPutting mapPutting, Loupe loupe, Accentuation accentuation, int tileSize) {
+
+        //Temporary
+        final TemporaryObjectAdditionSetting objectAdditionSetting = new TemporaryObjectAdditionSetting();
+        final TemporaryTileAdditionSetting temporaryTileAdditionSetting = new TemporaryTileAdditionSetting();
+
+        objectAdditionSetting.map = KeySetting.getObjectKeys();
+        temporaryTileAdditionSetting.map = KeySetting.getTileKeys();
+
+        final KeySettingsStore store = new KeySettingsStore() {
+            @Override
+            public ObjectAdditionKeysSetting getObjectAdditionKeysSetting() {
+                return objectAdditionSetting;
+            }
+
+            @Override
+            public TileAdditionKeysSetting getTileAdditionKeysSetting() {
+                return temporaryTileAdditionSetting;
+            }
+        };
+        //
         final AccentuationProxy accentuationProxy = new AccentuationProxy(accentuation, loupe, tileSize);
-        final ChangerProxy changerProxy = new ChangerProxy(changer,loupe, tileSize);
-        return  ControlBuilder.create(accentuationProxy, loupe, changerProxy);
+        final MapPuttingProxy changerProxy = new MapPuttingProxy(mapPutting,loupe, tileSize);
+        return  ControlBuilder.create(accentuationProxy, loupe, changerProxy, store);
     }
 
-    private static class ChangerProxy implements Changer {
-        private final Changer changer;
+    private static class TemporaryObjectAdditionSetting implements ObjectAdditionKeysSetting {
+
+        Map<Integer, ObjectType> map;
+
+        @Override
+        public boolean hasSwitched(int keyCode) {
+            return keyCode == KeyEvent.VK_TAB;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return map.isEmpty();
+        }
+
+        @Override
+        public Map<Integer, ObjectType> getObjectKeysSetting() {
+            return map;
+        }
+
+        @Override
+        public ObjectType get(int keyCode) {
+            return map.get(keyCode);
+        }
+    }
+    private static class TemporaryTileAdditionSetting implements TileAdditionKeysSetting {
+        Map<Integer, TileType> map;
+
+        @Override
+        public boolean hasSwitched(int keyCode) {
+            return keyCode == KeyEvent.VK_TAB;
+        }
+
+        @Override
+        public boolean isEmpty() {
+            return map.isEmpty();
+        }
+
+        @Override
+        public Map<Integer, TileType> getTileKeysSetting() {
+            return map;
+        }
+
+        @Override
+        public TileType get(int keyCode) {
+            return map.get(keyCode);
+        }
+    }
+
+    private static class MapPuttingProxy implements MapPutting {
+        private final MapPutting mapPutting;
         private final Loupe loupe;
         private final int tileSize;
 
-        private ChangerProxy(final Changer changer,
-                             final Loupe loupe,
-                             final int tileSize){
-            this.changer = changer;
+        private MapPuttingProxy(final MapPutting mapPutting,
+                                final Loupe loupe,
+                                final int tileSize){
+            this.mapPutting = mapPutting;
             this.loupe = loupe;
             this.tileSize = tileSize;
         }
 
         @Override
-        public void setTileType(TileType tileType, int x, int y) {
+        public void setTile(TileType tileType, int x, int y) {
             final IntegerCoordinates loupeTransfer = Transfer.transferLoupeCoordinates(loupe, x ,y);
             final IntegerCoordinates mapTransfer = Transfer.transferCoordinates(tileSize, loupeTransfer.getX(), loupeTransfer.getY());
             if(ModelCore.outOfMapBound(mapTransfer))
                 return;
-            changer.setTileType(tileType, mapTransfer.getX(), mapTransfer.getY());
+            mapPutting.setTile(tileType, mapTransfer.getX(), mapTransfer.getY());
         }
 
         @Override
-        public void add(ObjectType objectType, int x, int y) {
+        public void addObject(ObjectType objectType, int x, int y) {
             final IntegerCoordinates loupeTransfer = Transfer.transferLoupeCoordinates(loupe, x ,y);
             final IntegerCoordinates mapTransfer = Transfer.transferCoordinates(tileSize, loupeTransfer.getX(), loupeTransfer.getY());
             if(ModelCore.outOfMapBound(mapTransfer))
                 return;
-            changer.add(objectType, mapTransfer.getX(), mapTransfer.getY());
+            mapPutting.addObject(objectType, mapTransfer.getX(), mapTransfer.getY());
         }
     }
 

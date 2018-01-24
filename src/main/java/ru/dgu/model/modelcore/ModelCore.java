@@ -2,7 +2,7 @@ package ru.dgu.model.modelcore;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
-import ru.dgu.controller.Changer;
+import ru.dgu.controller.MapPutting;
 import ru.dgu.model.constants.Constants;
 import ru.dgu.model.exceptions.MapException;
 import ru.dgu.model.exceptions.ModelException;
@@ -175,18 +175,18 @@ public class ModelCore
         }
     }
 
-    public static Changer init()
+    public static MapPutting init()
     {
-        return new Changer()
+        return new MapPutting()
         {
             @Override
-            public void setTileType(TileType tileType, int x, int y)
+            public void setTile(TileType tileType, int x, int y)
             {
                 ModelCore.setTileType(tileType, x, y);
             }
 
             @Override
-            public void add(ObjectType objectType, int x, int y)
+            public void addObject(ObjectType objectType, int x, int y)
             {
                 ModelCore.addObjectOnTile(objectType, x, y);
             }

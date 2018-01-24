@@ -1,6 +1,6 @@
 package ru.dgu.controller.core.control.engine.addition;
 
-import ru.dgu.controller.Changer;
+import ru.dgu.controller.MapPutting;
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.controller.Switcher;
 import ru.dgu.controller.TileAdditionKeysSetting;
@@ -12,19 +12,19 @@ import java.awt.event.MouseEvent;
 class TileAdditionHandler extends MultiAdapter {
 
     private final TileAdditionKeysSetting tileKeysSetting;
-    private final Changer changer;
+    private final MapPutting mapPutting;
     private final Switcher switcher;
     private TileType type;
 
     TileAdditionHandler(Switcher switcher,
-                        Changer changer,
+                        MapPutting mapPutting,
                         TileAdditionKeysSetting tileKeysSetting) {
 
         if(tileKeysSetting.isEmpty())
             throw new IllegalArgumentException("Key codes for tile types are empty");
 
         this.switcher = switcher;
-        this.changer = changer;
+        this.mapPutting = mapPutting;
         this.tileKeysSetting = tileKeysSetting;
 
         setType(tileKeysSetting.getTileKeysSetting().values().iterator().next());
@@ -33,12 +33,12 @@ class TileAdditionHandler extends MultiAdapter {
     //start control block
     @Override
     public void mousePressed(MouseEvent e) {
-        changer.setTileType(type, e.getX(), e.getY());
+        mapPutting.setTile(type, e.getX(), e.getY());
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        changer.setTileType(type, e.getX(), e.getY());
+        mapPutting.setTile(type, e.getX(), e.getY());
     }
 
     @Override
@@ -62,5 +62,4 @@ class TileAdditionHandler extends MultiAdapter {
         if(type != null)
             this.type = type;
     }
-
 }

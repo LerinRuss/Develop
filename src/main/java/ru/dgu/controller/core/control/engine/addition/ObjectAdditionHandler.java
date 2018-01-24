@@ -1,6 +1,6 @@
 package ru.dgu.controller.core.control.engine.addition;
 
-import ru.dgu.controller.Changer;
+import ru.dgu.controller.MapPutting;
 import ru.dgu.controller.MultiAdapter;
 import ru.dgu.controller.ObjectAdditionKeysSetting;
 import ru.dgu.controller.Switcher;
@@ -11,19 +11,19 @@ import java.awt.event.MouseEvent;
 
 class ObjectAdditionHandler extends MultiAdapter {
     private final ObjectAdditionKeysSetting objectKeysSetting;
-    private final Changer changer;
+    private final MapPutting mapPutting;
     private final Switcher switcher;
     private ObjectType type;
 
     ObjectAdditionHandler(Switcher switcher,
-                          Changer changer,
+                          MapPutting mapPutting,
                           ObjectAdditionKeysSetting objectKeysSetting) {
 
         if(objectKeysSetting.isEmpty())
             throw new IllegalArgumentException("Key codes for object types are empty");
 
         this.switcher = switcher;
-        this.changer = changer;
+        this.mapPutting = mapPutting;
         this.objectKeysSetting = objectKeysSetting;
 
         type = objectKeysSetting.getObjectKeysSetting().values().iterator().next();
@@ -44,12 +44,12 @@ class ObjectAdditionHandler extends MultiAdapter {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        changer.add(type, e.getX(), e.getY());
+        mapPutting.addObject(type, e.getX(), e.getY());
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-        changer.add(type, e.getX(), e.getY());
+        mapPutting.addObject(type, e.getX(), e.getY());
     }
     //end control block
 
